@@ -1,0 +1,21 @@
+{
+  "dependencies": {
+    "express": "4.19.2",
+    "mysql2": "3.9.7",
+    "passport": "0.7.0",
+    "passport-local": "1.0.0",
+    "pug": "3.0.2",
+    "sass": "1.75.0"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "cifrador_texto_by_jc",
+  "version": "1.0.0",
+  "main": "server.js",
+  "devDependencies": {},
+  "keywords": [],
+  "author": "Jose Cob",
+  "license": "ISC",
+  "description": "Proyecto de Sexto Semestre de la UMSA"
+}
