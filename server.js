@@ -1,9 +1,18 @@
 //server.js
 const express = require('express');
 const app = express();
-const port = 3000;
+const path = require('path');
+const router = require('./routes/routes'); // Requiere la carpeta routes, del archivo routes.js para ejecutar las vistas del usuario
+
+//configura el motor de plantillas pug
+app.set('view engine', 'pug');
+app.set('views', path.join(__dirname, 'views'));
+
+//Ruta raíz o inicio de la pagina al ejecutarse
+app.use('/', router);
 
 //Iniciar servidor
+const port = 3000;
 app.listen(port, () =>{
-    console.log(`Servidor Express escuchando en http:/localhost:${port}`);
+    console.log(`Servidor iniciado en http:/localhost:${port}`);
 });
