@@ -8,6 +8,10 @@ const router = require('./routes/routes'); // Requiere la carpeta routes, del ar
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 
+// Middleware para procesar archivos estáticos en la carpeta 'public'
+app.use(express.static('public'));
+app.use(express.json());// Middleware para procesar solicitudes JSON
+
 //Ruta raíz o inicio de la pagina al ejecutarse
 app.use('/', router);
 
