@@ -1,4 +1,4 @@
-//layout.pug
+//header.pug
 doctype html 
 html 
     head 
@@ -13,12 +13,22 @@ html
                     a(href='/') 
                         i.material-symbols-outlined home
                         span &nbsp;Inicio
+                li 
+                    a(href='#')
+                        i.material-symbols-outlined encrypted
+                        span &nbsp;Cifradores
                 li
                     a(href='#') 
                         i.material-symbols-outlined account_circle
                         span &nbsp;Iniciar Sesión
                 li
                     a(href='#')
-                        i(class='material-symbols-rounded') logout
-        .container
+                        i.material-symbols-rounded logout
+        .container-header
+            hr
+            i.material-symbols-outlined arrow_right 
+            h2 cifrador de Textos Online
+            h1(class='title-text-header') TEXTCP
+            hr
+        .containerPage
             block content

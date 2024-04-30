@@ -1,0 +1,17 @@
+extends header
+
+block content
+    .container-login
+        h1(class='titlePage') #{title}
+
+        form(action='/login' method='POST' class='container-form-login')
+            .groupForm
+                label(for='' class='form-label') Usuario
+                input.form-input(type='text' name='' id='' placeholder='Agregar usuario', required, autofocus)
+            .groupForm    
+                label(for='' class='form-label') Contraseña
+                input.form-input(type='password' name='' id='' placeholder='Agregar contraseña', required)
+            .groupForm 
+                button(type='submit' class='btn-sesion') Iniciar sesión
+        p ¿No tienes cuenta? 
+            a(href='/register' class='btn-register') Registrarse
