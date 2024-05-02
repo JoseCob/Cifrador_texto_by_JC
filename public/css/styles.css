@@ -31,26 +31,143 @@ hr{
     height: 2px; /* Altura de la línea */
     background-color: #0070C0;
 }
+h1{
+    font-family: "Noto Sans", sans-serif;
+}
+h2{
+    font-family: "Reddit Mono", Arial;
+}
+a{
+    text-decoration: none;
+}
+img{
+    user-select: none;
+    pointer-events: none;
+}
 
 /*Estilos para el cuerpo de la pagina*/
 body {
-    font-family: "Noto Sans", sans-serif;
+    font-family:Arial, Helvetica, sans-serif;
     margin: 0;
     padding: 0;
-    background-color:aliceblue;
+    background-color:rgba(224, 211, 211, 0.18);
 }
-.container-Header{
-    margin-top: 40px;
+
+.container-header{
+    margin-top: 42px;
+}
+
+.contain-header{
+    display: flex; /* Usa flexbox para alinear los elementos */
+    justify-content: space-between; /* Espacio entre los elementos */
+    align-items: center; /* Centra verticalmente los elementos */
+}
+.left-content{
+    background-color: #70AD47;
+    color: white;
+    display: flex; /* Usa flexbox para los elementos a la izquierda */
+    align-items: center; /* Centra verticalmente los elementos */
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding-right: 25px;
+}
+.arrow-icon-left{
+    margin-top: .5px;
+    margin-right: 5px; /* Espacio entre el icono y el texto */
+}
+.title-text-header {
+    text-align: center; /* Centra el texto del h1 */
+    flex: 1; /* Hace que el título ocupe todo el espacio disponible */
+    margin-right: 300px;
+    font-size: 40px;
+    color: #00B0F0;
+    text-shadow: 2px 2px 2px #b3acac; /* Añade un resalte gris */
+}
+
+.containerPage {
+    width: auto;
+}
+
+.content-container {
+    margin-top: 35px;
+    margin-bottom: 35px;
+    margin-left: 50px;
+    margin-right: 50px;
+    padding: 30px 40px;
+    border: 2px solid #70AD47;
+    background-color: white;
+    font-size: 22px;
+}
+
+.title-content {
+    margin-top: -10px;
+    font-size: 35px;
+    font-weight: 800;
+}
+.container-warning{
+    display: flex; /* Usa flexbox para alinear los elementos */
+    justify-content: space-between; /* Espacio entre los elementos */
+    align-items: center; /* Centra verticalmente los elementos */
+}
+.warning{
+    display: flex;
+    align-items: center;
+}
+.img-warning{
+    margin-right: 5px;
+}
+.text-warning{
+    user-select: none;
+    font-size: 25px;
+    font-weight: 600;
+    animation: destello 5s infinite alternate; /* Aplicar la animación con una duración de 10 segundos y repetición infinita */
+}
+@keyframes destello {
+    0% {
+      color: rgb(210, 4, 4); /* Color amarillo al inicio */
+      font-weight: bold;
+    }
+    50% {
+      color: #e4b311; /* Color normal a la mitad de la animación */
+    }
+    100% {
+      color: rgba(207, 9, 9, 0.868); /* Color amarillo al final */
+      font-weight: bold;
+    }
+}
+.subtext-warning{
+    margin-top: -2px;
+}
+.list-home{
+    line-height: 1.8;
+}
+.start-now {
+    text-transform: uppercase;
+    font-size: 30px;
+    border-radius: 20px;
+    padding: 20px;
+    color: white;
+    background: red;
+    position: absolute; /* Posicionamiento absoluto */
+    vertical-align: middle; /* Centra verticalmente el contenido */
+    text-align: center;
+    left: 50%;
+    transform: translate(-50%, 0%); /* Centra el botón en el centro absoluto */
+    border: none;
+}
+.start-now:hover{
+    background-color: rgb(199, 19, 19);
+    cursor: pointer;
 }
 
 /*Estilo para el navbar del sitio*/
 nav {
+    text-align: center;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: #0070C0;
     padding: 5px 0;
-    text-align: center;
 }
 nav ul {
     display: flex;
@@ -71,10 +188,42 @@ nav ul li a {
     border-radius: 20px;
     transition: background-color 0.3s;
 }
-  nav ul li a:hover {
+nav ul li a:hover {
     background-color: white;
     color: black;
 }
-i {
+i{
+    margin-top: -4px;
+}
+
+/*Estilo para los Cifradores*/
+.container-main-ciphers{
+    margin-top: 35px;
+}
+.ciphers-text-box{
+    display: inline-block;
+    background-color: #e2e1e1;
+    border-radius: 12px;
+    padding-left: 15px;
+    padding: 10px;
+}
+.ciphers-text-box:hover{
+    cursor: pointer;
+}
+.text-help{
+    font-size: 35px;
+    font-family: 'Times New Roman';
+}
+.icon-expand-more{
+    font-size: 50px !important;
+    display: inline-block;
     vertical-align: middle;
+    margin-left: 35px;
+}
+.help-menu{
+    line-height: 2.5;
+    margin-left: 15px;
+}
+.form-ciphers{
+    margin-bottom: 80px;
 }

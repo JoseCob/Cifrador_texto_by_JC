@@ -14,21 +14,25 @@ html
                         i.material-symbols-outlined home
                         span &nbsp;Inicio
                 li 
-                    a(href='#')
+                    a(href='/ciphers')
                         i.material-symbols-outlined encrypted
                         span &nbsp;Cifradores
                 li
-                    a(href='#') 
+                    a(href='/login') 
                         i.material-symbols-outlined account_circle
                         span &nbsp;Iniciar Sesión
                 li
                     a(href='#')
                         i.material-symbols-rounded logout
+                        
         .container-header
             hr
-            i.material-symbols-outlined arrow_right 
-            h2 cifrador de Textos Online
-            h1(class='title-text-header') TEXTCP
+            .contain-header
+                .left-content
+                    i(class='arrow-icon-left').material-symbols-outlined arrow_right 
+                    h2 Cifrador de Textos Online
+                h1(class='title-text-header') TEXTCP
             hr
+
         .containerPage
             block content

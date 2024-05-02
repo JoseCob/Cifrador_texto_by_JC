@@ -1,0 +1,28 @@
+extends header 
+
+block content
+    .container-main-ciphers
+        .content-container
+            h1.title-content #{title}
+            .ciphers-text-box
+                span.text-help ¿Cómo cifrar texto?
+                i(class='icon-expand-more').material-symbols-outlined expand_more
+            ul(class='help-menu')
+                li
+                    a Elija una opción de cifrado de su preferencia con sus respectivas características.
+                li
+                    a Simplemente pegue el texto que desea descifrar en el campo proporcionado "Introducir Texto para cifrar".
+                li
+                    a Haga clic sobre el botón Cifrar Texto.
+                li 
+                    a La herramienta generará el texto cifrado al instante.
+
+            form.form-ciphers(action='#' method='')
+                select(name='' id='')
+                    option(value='selection') -- Selecciona el cifrador de Texto de tu preferencia --
+                    option(value='Código Cesar') 1. Código Cesar
+                    option(value='Sustitución') 2. Sustitución
+                    option(value='Base64 ') 3. Base64 
+                    option(value='Hexadecimal') 4. Hexadecimal
+
+            button(type='submit').start-now ¡IR Al CIFRADOR!
