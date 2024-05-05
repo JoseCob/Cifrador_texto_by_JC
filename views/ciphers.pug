@@ -16,13 +16,11 @@ block content
                     a Haga clic sobre el botón Cifrar Texto.
                 li 
                     a La herramienta generará el texto cifrado al instante.
-
-            form.form-ciphers(action='#' method='')
-                select(name='' id='')
-                    option(value='selection') -- Selecciona el cifrador de Texto de tu preferencia --
-                    option(value='Código Cesar') 1. Código Cesar
-                    option(value='Sustitución') 2. Sustitución
-                    option(value='Base64 ') 3. Base64 
-                    option(value='Hexadecimal') 4. Hexadecimal
-
-            button(type='submit').start-now ¡IR Al CIFRADOR!
+            .container-category
+                strong.title-category Selecciona el cifrador de texto de tu preferencia
+                .content-category
+                    .category-ciphers
+                        a(href='#' class='cipher-box') Cesar 
+                        a(href='#' class='cipher-box') Sustitución 
+                        a(href='#' class='cipher-box') Base64 
+                        a(href='#' class='cipher-box') Hexadecimal 

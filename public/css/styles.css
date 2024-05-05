@@ -26,37 +26,80 @@
 }
 
 /*Estilos globales*/
+body {
+    font-family:Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-color:rgba(169, 151, 151, 0.2);
+}
+
 hr{
     border: none; /* Quita el borde predeterminado */
     height: 2px; /* Altura de la línea */
     background-color: #0070C0;
 }
+
 h1{
     font-family: "Noto Sans", sans-serif;
 }
+
 h2{
     font-family: "Reddit Mono", Arial;
 }
+
 a{
     text-decoration: none;
 }
+
 img{
     user-select: none;
     pointer-events: none;
 }
 
-/*Estilos para el cuerpo de la pagina*/
-body {
-    font-family:Arial, Helvetica, sans-serif;
-    margin: 0;
+/*Estilo para el navbar del sitio*/
+nav {
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #0070C0;
+    padding: 5px 0;
+    user-select: none;
+}
+nav ul {
+    display: flex;
+    list-style-type: none;
+    margin-left: auto;
     padding: 0;
-    background-color:rgba(224, 211, 211, 0.18);
+}
+nav ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+nav ul li a {
+    display: flex;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 20px;
+    transition: background-color 0.3s;
+}
+nav ul li a:hover {
+    background-color: white;
+    color: black;
+}
+i{
+    margin-top: -4px;
 }
 
+/*Estilos relacionados al inicio de la pagina*/
 .container-header{
     margin-top: 42px;
 }
-
 .contain-header{
     display: flex; /* Usa flexbox para alinear los elementos */
     justify-content: space-between; /* Espacio entre los elementos */
@@ -70,6 +113,7 @@ body {
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
     padding-right: 25px;
+    user-select: none;
 }
 .arrow-icon-left{
     margin-top: .5px;
@@ -89,6 +133,7 @@ body {
 }
 
 .content-container {
+    position: relative; /* Cambia a posicionamiento relativo */
     margin-top: 35px;
     margin-bottom: 35px;
     margin-left: 50px;
@@ -98,11 +143,10 @@ body {
     background-color: white;
     font-size: 22px;
 }
-
 .title-content {
     margin-top: -10px;
     font-size: 35px;
-    font-weight: 800;
+    font-weight: 900;
 }
 .container-warning{
     display: flex; /* Usa flexbox para alinear los elementos */
@@ -154,49 +198,14 @@ body {
     left: 50%;
     transform: translate(-50%, 0%); /* Centra el botón en el centro absoluto */
     border: none;
+    user-select: none;
 }
 .start-now:hover{
     background-color: rgb(199, 19, 19);
     cursor: pointer;
 }
 
-/*Estilo para el navbar del sitio*/
-nav {
-    text-align: center;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #0070C0;
-    padding: 5px 0;
-}
-nav ul {
-    display: flex;
-    list-style-type: none;
-    margin-left: auto;
-    padding: 0;
-}
-nav ul li {
-    display: inline-block;
-    margin-right: 20px;
-}
-nav ul li a {
-    display: flex;
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    padding: 5px 10px;
-    border-radius: 20px;
-    transition: background-color 0.3s;
-}
-nav ul li a:hover {
-    background-color: white;
-    color: black;
-}
-i{
-    margin-top: -4px;
-}
-
-/*Estilo para los Cifradores*/
+/*Estilo para la pagina de los Cifradores*/
 .container-main-ciphers{
     margin-top: 35px;
 }
@@ -206,6 +215,7 @@ i{
     border-radius: 12px;
     padding-left: 15px;
     padding: 10px;
+    user-select: none;
 }
 .ciphers-text-box:hover{
     cursor: pointer;
@@ -221,9 +231,149 @@ i{
     margin-left: 35px;
 }
 .help-menu{
-    line-height: 2.5;
+    line-height: 1.8;
     margin-left: 15px;
 }
-.form-ciphers{
-    margin-bottom: 80px;
+.container-category{
+    text-align: center;
+    margin-top: 60px; /* Ajusta el margen superior según sea necesario */
+}
+.title-category{
+    display: inline-block;
+    padding: 20px 40px;
+    background-color: #e2e1e1;
+    border-radius: 18px;
+    width: 65%;
+    font-weight: 900;
+    font-size: 26px;
+}
+.content-category{
+    margin-top: 60px;
+    display: flex; /* Usa flexbox para alinear los elementos */
+    justify-content:space-between; /* Espacio entre los elementos */
+    align-items: center; /* Centra verticalmente los elementos */
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan en múltiples líneas */
+}
+.category-ciphers{
+    width: 100%; /* Asegura que los elementos ocupen todo el ancho */
+    display: flex; /* Usa flexbox para alinear los elementos */
+    justify-content: space-between; /* Centra horizontalmente los elementos */
+    flex-wrap: wrap;
+}
+.cipher-box{
+    margin: 30px;
+    padding: 15px;
+    background-color: #AAD18C;
+    border: 2px solid #AAD18C;
+    border-radius: 16px;
+    color: white;
+    font-size: 3rem;
+    text-align: center;
+    vertical-align: middle;
+    text-shadow: 2px 2px 2px rgb(136, 130, 130);
+    cursor: pointer;
+    user-select: none;
+    width: 300px; /* Ajusta el ancho máximo de cada enlace */
+    flex: 1; /* Permite que los enlaces se ajusten dinámicamente */
+}
+.cipher-box:hover{
+    background-color: #70AD47;
+    border: 2px solid #70AD47;
+}
+
+/*Estilo para la pagina del login*/
+.container-login {
+    background-color: hsl(0, 0%, 100%);
+    border: 1px solid #0070C0;
+    border-radius: 12px;
+    padding: 18px;
+    width: 500px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 40%);
+}
+.titlePage {
+    font-size: 2rem; /* Ajusta el tamaño del título según sea necesario */
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    background-color: #0070C0;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    width:103.3%;
+    padding: 10px;
+    color: white;
+    top: 10px;
+    transform: translate(-3.4%,-62%);
+    text-transform: uppercase;
+}
+.groupForm {
+    margin: 30px;
+    margin-top: 20px;
+    margin-bottom: 20px; /* Ajusta el margen inferior de cada grupo de formulario según sea necesario */
+}
+.groupIcon-label{
+    display: flex;
+    justify-content:start; /* Espacio entre los elementos */
+    align-items: center; /* Centra verticalmente los elementos */
+}
+.form-label {
+    display: block; /* Convierte las etiquetas en elementos de bloque */
+    margin: 10px;
+    font-size: 1.2rem;
+}
+.form-input{
+    width: 92%; /* Ajusta el ancho de los campos de entrada */
+    padding: 12px; /* Ajusta el relleno de los campos de entrada según sea necesario */
+    margin-bottom: 10px; /* Ajusta el margen inferior de los campos de entrada según sea necesario */
+    font-size: 1.2rem;
+    border-radius: 5px;
+    border: 1px solid #0070C0;
+    align-self: center;
+}
+input:hover, input:focus, input:active, input:focus-visible{
+border: 1px solid #007bff;
+  outline-width: 1px;
+  outline-style: solid;
+  outline-color: #007bff;
+}
+.btn-send {
+    border: none;
+    border-radius: 8px;
+    font-size: 22px;
+    color: white;
+    background-color: #70AD47;
+    width: 100%; /* Ajusta el ancho del botón de enviar */
+    padding: 12px; /* Ajusta el relleno del botón de enviar según sea necesario */
+    cursor:pointer;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+.btn-send:hover{
+    background-color: #429206;
+    color: #e2e1e1;
+}
+.login-line-down{
+    display: flex;
+    transform: translate(-3.4%, 0%);
+    width: 107.5%;
+}
+.text-down-login{
+    display: flex;
+    transform: translate(0%, 20%);
+    justify-content:center; /* Espacio entre los elementos */
+    align-items: center; /* Centra verticalmente los elementos */
+}
+.suggesting-link{
+    margin-left: 6px;
+    border-bottom: 1px solid #cba015; /* Estilo y color de la línea de enlace */
+    color: #cba015;
+}
+.suggesting-link-text{
+    margin-left: 6px;
+}
+.suggesting-link:hover {
+    color: #ffcc00; /* Cambiamos el color del texto al pasar el ratón */
+    border-bottom-color: #ffcc00; /* Cambiamos el color de la línea al pasar el ratón */
 }
