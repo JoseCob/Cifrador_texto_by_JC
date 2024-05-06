@@ -2,33 +2,39 @@ extends header
 
 block content
     .container-register
-        h1.titlePage(class='register-title') Crea una cuenta
+        h1.titlePage Crea una cuenta
         form(action='/get-user' method='post')
             .register-row
                 .groupForm-register
-                    label(for='').form-label Nombre de pila
-                    input.form-input-register(type='text' name='' id='' placeholder='Agregar Nombre', required, autofocus)
+                    .form-label
+                        label.label-register(for='name') Nombre de pila
+                    input.form-input-register(type='text' name='name' id='name' placeholder='Agregar Nombre', required, autofocus)
                 .groupForm-register
-                    label(for='').form-label Apellido
-                    input.form-input-register(type='text' name='' id='' placeholder='Agregar Apellido', required, autofocus)
+                    .form-label
+                        label.label-register(for='lastName') Apellido
+                    input.form-input-register(type='text' name='lastName' id='lastName' placeholder='Agregar Apellido', required)
             .register-row
                 .groupForm-register
-                    label(for="").form-label Usuario
-                    input.form-input-register(type="text" name='' id='' placeholder='Crear Nombre de Usuario', required) 
+                    .form-label
+                        label.label-register(for='user') Usuario
+                    input.form-input-register(type='text' name='user' id='user' placeholder='Crear Nombre de Usuario', required) 
                 .groupForm-register
-                    label(for='').form-label Correo
-                    input.form-input-register(type='email' name='' id='' placeholder='Agregar Correo Electrónico', required)
+                    .form-label
+                        label.label-register(for='email') Correo
+                    input.form-input-register(type='email' name='email' id='email' placeholder='Agregar Correo Electrónico', required)
             .register-row
                 .groupForm-register
-                    label(for="").form-label Contraseña
-                    input.form-input-register(type="password" name='' id='' placeholder='Crear Contraseña', required) 
+                    .form-label
+                        label.label-register(for='password') Contraseña
+                    input.form-input-register(type='password' name='password' id='password' placeholder='Crear Contraseña', required) 
                 .groupForm-register
-                    label(for="").form-label Confirmar Contraseña
-                    input.form-input-register(type="password" name='' id='' placeholder='Confirmar Contraseña', required)
+                    .form-label
+                        label.label-register(for='confirmPassword') Confirmar Contraseña
+                    input.form-input-register(type='password' name='confirmPassword' id='confirmPassword' placeholder='Confirmar Contraseña', autocomplete='off', required)
             .groupForm-btnRegister
                 button(type='submit' class='btn-send btnRegister') Crear Cuenta
-        hr.register-line-down
-        .text-down-login
+        hr.line-down
+        .line-down-text
             p ¿Ya tienes cuenta? 
             a(href='/login' class='suggesting-link') Iniciar sesión
             p(class='suggesting-link-text') aqui

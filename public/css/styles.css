@@ -206,7 +206,7 @@ i{
     cursor: pointer;
 }
 
-/*Estilo para la pagina de los Cifradores*/
+/*Estilo para el menú de los Cifradores*/
 .container-main-ciphers{
     margin-top: 35px;
 }
@@ -355,12 +355,12 @@ border: 1px solid #007bff;
     background-color: #429206;
     color: #e2e1e1;
 }
-.login-line-down{
+.line-down{
     display: flex;
     transform: translate(0%, 0%);
     width: 100%;
 }
-.text-down-login{
+.line-down-text{
     display: flex;
     justify-content:center; /* Espacio entre los elementos */
     align-items: center; /* Centra verticalmente los elementos */
@@ -383,21 +383,22 @@ border: 1px solid #007bff;
     background-color: hsl(0, 0%, 100%);
     border: 1px solid #0070C0;
     border-radius: 12px;
-    padding: 18px;
     width: 900px;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, 25%);
-}
-.register-title{
-    width:102% !important;
-    transform: translate(-2%,-62%) !important;
+    transform: translate(-50%, 28%);
 }
 .register-row{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.groupForm-register{
+    margin: 120px;
+    margin-top: 10px;
+    margin-bottom: 12px; /* Ajusta el margen inferior de cada grupo de formulario según sea necesario */
+    margin-left: 30px;
 }
 .form-input-register{
     width: 125%; /* Ajusta el ancho de los campos de entrada */
@@ -408,12 +409,6 @@ border: 1px solid #007bff;
     border: 1px solid #0070C0;
     align-self: center;
 }
-.groupForm-register{
-    margin: 120px;
-    margin-top: 10px;
-    margin-bottom: 12px; /* Ajusta el margen inferior de cada grupo de formulario según sea necesario */
-    margin-left: 30px;
-}
 .groupForm-btnRegister{
     display: flex;
     justify-content: center;
@@ -422,11 +417,7 @@ border: 1px solid #007bff;
 }
 .btnRegister{
     width: 45% !important;
-}
-.register-line-down{
-    display: flex;
-    transform: translate(-2%, 0%);
-    width: 104.2%;
+    transform: translate(2%, 0%) !important;
 }
 
 /*Para Dispositivos moviles */
@@ -503,13 +494,37 @@ border: 1px solid #007bff;
         width: 85%;
     }
     .btn-send{
-        font-size: 18;
+        font-size: 18px;
         width: 80%;
         transform: translate(12%, 0%);
     }
 
     /*register*/
-    
+    .container-register{
+        width: 92%;
+        transform: translate(-50%, 22%);
+    }
+    .register-row{
+        display:inline;
+        justify-content:start; /* Espacio entre los elementos */
+        align-items: center; /* Centra verticalmente los elementos */
+    }
+    .groupForm-register{
+        margin: 10px;
+    }
+    .form-input-register{
+        width: 90%;
+        padding: 10px;
+        font-size: 1rem;
+        margin-left: 10px    ;
+    }
+    .label-register{
+        font-size: 1rem;
+    }
+    .btnRegister{
+        font-size: 16px;
+        width: 80%;
+    }
 }
 
 /*Para tabletas y escritorios*/
@@ -528,5 +543,17 @@ border: 1px solid #007bff;
     /*index*/
     .content-container{
         padding: 20px 30px;
+    }
+
+    /*register*/
+    .container-register{
+        width: 85%;
+        transform: translate(-50%, 28%);
+    }
+    .label-register{
+        font-size: 15px;
+    }
+    .form-input-register{
+        font-size: 15px;
     }
 }

@@ -1,0 +1,17 @@
+extends header 
+
+block content
+    .cipherPage-container
+        h1.title-content #{title}
+        .cipherPage-box 
+            form(action="#" method='#')
+                .cipherPage-content-left
+                    label(for='originalText' class='label-cipherPage') Pegue el texto que desea cifrar aquí: 
+                    textarea(name='originalText' id='originalText' rows="10" cols="50" placeholder='Introducir Texto para cifrar')
+                button(type='submit' class='btn-cipherPage') Cifrar Texto
+
+            form(action='#' method='#')
+                .cipherPage-content-left
+                    label(for='encryptedText' id='' class='label-cipherPage') Copie el texto Cifrado: 
+                    textarea(name='encryptedText' id='encryptedText' rows="10" cols="50")
+                button(type='submit' class='btn-cipherPage') Copiar Texto 
