@@ -33,7 +33,7 @@ body {
     width: 100%;
     height: 100%;
     position: relative;
-    background-color:rgba(169, 151, 151, 0.2);
+    background-color:rgba(233, 224, 224, 0.25);
 }
 
 hr{
@@ -54,6 +54,10 @@ a{
     text-decoration: none;
 }
 
+p{
+    font-size: 20px;
+}
+
 img{
     user-select: none;
     pointer-events: none;
@@ -63,6 +67,7 @@ img{
 nav {
     text-align: center;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     background-color: #0070C0;
@@ -128,10 +133,6 @@ i{
     text-shadow: 2px 2px 2px #b3acac; /* Añade un resalte gris */
 }
 
-.containerPage {
-    width: auto;
-}
-
 .content-container {
     position: relative; /* Cambia a posicionamiento relativo */
     margin-top: 35px;
@@ -162,7 +163,7 @@ i{
 }
 .text-warning{
     user-select: none;
-    font-size: 25px;
+    font-size: 30px;
     font-weight: 600;
     animation: destello 5s infinite alternate; /* Aplicar la animación con una duración de 10 segundos y repetición infinita */
 }
@@ -236,7 +237,7 @@ i{
 }
 .container-category{
     text-align: center;
-    margin-top: 60px; /* Ajusta el margen superior según sea necesario */
+    margin-top: 40px; /* Ajusta el margen superior según sea necesario */
 }
 .title-category{
     display: inline-block;
@@ -248,7 +249,7 @@ i{
     font-size: 26px;
 }
 .content-category{
-    margin-top: 60px;
+    margin-top: 12px;
     display: flex; /* Usa flexbox para alinear los elementos */
     justify-content:space-between; /* Espacio entre los elementos */
     align-items: center; /* Centra verticalmente los elementos */
@@ -286,8 +287,7 @@ i{
     background-color: hsl(0, 0%, 100%);
     border: 1px solid #0070C0;
     border-radius: 12px;
-    padding: 18px;
-    width: 500px;
+    width: 600px;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -301,12 +301,12 @@ i{
     background-color: #0070C0;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-    width:103.3%;
-    padding: 10px;
+    padding: 2px;
     color: white;
-    top: 10px;
-    transform: translate(-3.4%,-62%);
+    width: calc(100% + -3px); /* Ajusta el ancho para que cubra todo el ancho del contenedor */
     text-transform: uppercase;
+    margin-top: auto;
+    margin-bottom: 25px;
 }
 .groupForm {
     margin: 30px;
@@ -344,8 +344,9 @@ border: 1px solid #007bff;
     font-size: 22px;
     color: white;
     background-color: #70AD47;
-    width: 100%; /* Ajusta el ancho del botón de enviar */
-    padding: 12px; /* Ajusta el relleno del botón de enviar según sea necesario */
+    width: 50%; /* Ajusta el ancho del botón de enviar */
+    padding: 10px; /* Ajusta el relleno del botón de enviar según sea necesario */
+    transform: translate(50%, 0%);
     cursor:pointer;
     text-transform: uppercase;
     margin-bottom: 20px;
@@ -356,24 +357,176 @@ border: 1px solid #007bff;
 }
 .login-line-down{
     display: flex;
-    transform: translate(-3.4%, 0%);
-    width: 107.5%;
+    transform: translate(0%, 0%);
+    width: 100%;
 }
 .text-down-login{
     display: flex;
-    transform: translate(0%, 20%);
     justify-content:center; /* Espacio entre los elementos */
     align-items: center; /* Centra verticalmente los elementos */
 }
 .suggesting-link{
     margin-left: 6px;
-    border-bottom: 1px solid #cba015; /* Estilo y color de la línea de enlace */
-    color: #cba015;
+    border-bottom: 1px solid #0070C0; /* Estilo y color de la línea de enlace */
+    color: #0070C0;
 }
 .suggesting-link-text{
     margin-left: 6px;
 }
 .suggesting-link:hover {
-    color: #ffcc00; /* Cambiamos el color del texto al pasar el ratón */
-    border-bottom-color: #ffcc00; /* Cambiamos el color de la línea al pasar el ratón */
+    color: #4ba1df; /* Cambiamos el color del texto al pasar el ratón */
+    border-bottom-color: #4ba1df; /* Cambiamos el color de la línea al pasar el ratón */
+}
+
+/*Estilo para el registro*/
+.container-register {
+    background-color: hsl(0, 0%, 100%);
+    border: 1px solid #0070C0;
+    border-radius: 12px;
+    padding: 18px;
+    width: 900px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 25%);
+}
+.register-title{
+    width:102% !important;
+    transform: translate(-2%,-62%) !important;
+}
+.register-row{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form-input-register{
+    width: 125%; /* Ajusta el ancho de los campos de entrada */
+    padding: 12px; /* Ajusta el relleno de los campos de entrada según sea necesario */
+    margin-bottom: 10px; /* Ajusta el margen inferior de los campos de entrada según sea necesario */
+    font-size: 1.2rem;
+    border-radius: 5px;
+    border: 1px solid #0070C0;
+    align-self: center;
+}
+.groupForm-register{
+    margin: 120px;
+    margin-top: 10px;
+    margin-bottom: 12px; /* Ajusta el margen inferior de cada grupo de formulario según sea necesario */
+    margin-left: 30px;
+}
+.groupForm-btnRegister{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 12px;
+}
+.btnRegister{
+    width: 45% !important;
+}
+.register-line-down{
+    display: flex;
+    transform: translate(-2%, 0%);
+    width: 104.2%;
+}
+
+/*Para Dispositivos moviles */
+@media only screen and (max-width: 767px){
+    /*navbar*/
+    nav {
+        padding: 5px 0;
+    }
+    nav ul {
+        margin-left: 1.5px;
+    }
+    nav ul li {
+        margin-right: auto;
+    }
+
+    /*header*/
+    .left-content{
+        padding-right: 15px;
+        max-width: 50%;
+    }
+    .contain-header{
+        display: flex; /* Usa flexbox para alinear los elementos */
+        justify-content:center; /* Espacio entre los elementos */
+        align-items: center; /* Centra verticalmente los elementos */
+    }
+    .title-text-header {
+        text-align: end;
+        margin-right: 15px;
+    }
+
+    /*index*/
+    .content-container{
+        padding: 15px 20px;
+    }
+    .text-warning{
+        font-size: 25px;
+    }
+    .start-now{
+        transform: translate(-50%, -15%); /* Centra el botón en el centro absoluto */
+        font-size: 20px;
+        padding: 15px;
+    }
+
+    /*ciphers*/
+    .title-content{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 30px;
+    }
+    .ciphers-text-box{
+        padding: 5px;
+    }
+    .text-help{
+        font-size: 22px;
+    }
+    .icon-expand-more{
+        margin-left: 10px;
+        font-size: 30px !important;
+    }
+    .help-menu{
+        font-size: 1rem;
+        margin-left: 5px;
+    }
+    .title-category{
+        font-size: 1.2rem;
+    }
+    .cipher-box{
+        font-size: 1.5rem;
+    }
+
+    /*login*/
+    .container-login{
+        width: 85%;
+    }
+    .btn-send{
+        font-size: 18;
+        width: 80%;
+        transform: translate(12%, 0%);
+    }
+
+    /*register*/
+    
+}
+
+/*Para tabletas y escritorios*/
+@media only screen and (min-width: 768px) and (max-width:1024px){
+    /*header*/
+    .contain-header{
+        display: flex; /* Usa flexbox para alinear los elementos */
+        justify-content:center; /* Espacio entre los elementos */
+        align-items: center; /* Centra verticalmente los elementos */
+    }
+    .title-text-header {
+        text-align: end;
+        margin-right: 120px;
+    }
+
+    /*index*/
+    .content-container{
+        padding: 20px 30px;
+    }
 }
