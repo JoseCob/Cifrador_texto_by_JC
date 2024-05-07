@@ -6,7 +6,8 @@ block content
             h1.title-content #{title}
             .ciphers-text-box
                 span.text-help ¿Cómo cifrar texto?
-                i(class='icon-expand-more').material-symbols-outlined expand_more
+                i(class='icon-expand-more').material-symbols-outlined unfold_more
+
             ul(class='help-menu')
                 li
                     a Elija una opción de cifrado de su preferencia con sus respectivas características.
@@ -16,11 +17,35 @@ block content
                     a Haga clic sobre el botón Cifrar Texto.
                 li 
                     a La herramienta generará el texto cifrado al instante.
+
             .container-category
                 strong.title-category Selecciona el cifrador de texto de tu preferencia
                 .content-category
                     .category-ciphers
-                        a(href='/cesar' class='cipher-box') Cesar 
-                        a(href='#' class='cipher-box') Sustitución 
-                        a(href='#' class='cipher-box') Base64 
-                        a(href='#' class='cipher-box') Hexadecimal 
+                        a(href='/pageCesar'       class='cipher-box') Cesar 
+                        a(href='/pageOctal'       class='cipher-box') Octal 
+                        a(href='/pageBase64'      class='cipher-box') Base64 
+                        a(href='/pageHexadecimal' class='cipher-box') Hexadecimal 
+
+            script.
+                const helpMenu = document.querySelector('.help-menu');
+                const helpText = document.querySelector('.ciphers-text-box');
+
+                // Oculta el menú de ayuda al cargar la página
+                helpMenu.style.maxHeight = '0';
+
+                // Agrega un evento de clic al texto de ayuda
+                helpText.addEventListener('click', function() {
+                    if (helpMenu.style.maxHeight === '0px') {
+                        helpMenu.style.maxHeight = '500px'; // Cambia este valor según la altura máxima que desees
+                    } else {
+                        helpMenu.classList.add('closing'); // Agrega la clase de cierre
+                        setTimeout(function() {
+                            helpMenu.style.maxHeight = '0';
+                            // Elimina la clase de cierre después de que termine la transición
+                            setTimeout(function() {
+                                helpMenu.classList.remove('closing');
+                            }, 0); //El tiempo tiene que coincidir con el tiempo de la transición en CSS
+                        }, 0); // Espera 0 milisegundos antes de establecer la altura máxima en 0
+                    }
+                });

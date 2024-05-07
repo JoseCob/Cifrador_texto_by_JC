@@ -33,7 +33,7 @@ body {
     width: 100%;
     height: 100%;
     position: relative;
-    background-color:rgba(233, 224, 224, 0.25);
+    background-color:#f1eeee;
 }
 
 hr{
@@ -124,7 +124,7 @@ i{
     margin-top: .5px;
     margin-right: 5px; /* Espacio entre el icono y el texto */
 }
-.title-text-header {
+.title-text-header{
     text-align: center; /* Centra el texto del h1 */
     flex: 1; /* Hace que el título ocupe todo el espacio disponible */
     margin-right: 300px;
@@ -160,10 +160,12 @@ i{
 }
 .img-warning{
     margin-right: 5px;
+    width: 80px;
+    height: 80px;
 }
 .text-warning{
     user-select: none;
-    font-size: 30px;
+    font-size: 50px;
     font-weight: 600;
     animation: destello 5s infinite alternate; /* Aplicar la animación con una duración de 10 segundos y repetición infinita */
 }
@@ -217,23 +219,32 @@ i{
     padding-left: 15px;
     padding: 10px;
     user-select: none;
+    cursor: pointer;
 }
 .ciphers-text-box:hover{
-    cursor: pointer;
+    background-color: #868686;
+    color: white;
 }
 .text-help{
     font-size: 35px;
     font-family: 'Times New Roman';
 }
 .icon-expand-more{
-    font-size: 50px !important;
+    font-size: 40px !important;
     display: inline-block;
     vertical-align: middle;
-    margin-left: 35px;
+    margin-left: 40px;
 }
 .help-menu{
     line-height: 1.8;
     margin-left: 15px;
+    font-size: 28px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 500ms linear; /* Transición de 0.3 segundos con suavizado */
+}
+.help-menu.closing {
+    transition: max-height 0ms linear; /* Transición más rápida para cerrar */
 }
 .container-category{
     text-align: center;
@@ -333,10 +344,10 @@ i{
     align-self: center;
 }
 input:hover, input:focus, input:active, input:focus-visible{
-border: 1px solid #007bff;
-  outline-width: 1px;
-  outline-style: solid;
-  outline-color: #007bff;
+    border: 1px solid #007bff;
+    outline-width: 1px;
+    outline-style: solid;
+    outline-color: #007bff;
 }
 .btn-send {
     border: none;
@@ -420,6 +431,95 @@ border: 1px solid #007bff;
     transform: translate(2%, 0%) !important;
 }
 
+/*Estilo para la página de los cifradores*/
+.cipherPage-container {
+    max-width: 1330px; /* Se usa max-width para que no se desborde en pantallas pequeñas */
+    margin: auto; /* Centra el contenedor */
+    padding: 0 20px; /* Añadido para espacio en los lados */
+    box-sizing: border-box; /* Asegura que el padding no incremente el ancho */
+    position: relative;
+    top: 50%;
+    transform: translateY(0%);
+    line-height: 1.5;
+}
+.title-cipherPage{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+.cipherPage-box {
+    display: flex;
+    flex-direction: column; /* Apila los elementos */
+    align-items: center; /* Centra los elementos */
+}
+.form-cipherPage{
+    margin-bottom: 50px;
+}
+.box-clave-cipherPage{
+    margin-bottom: 20px;
+    font-size: 30px;
+    vertical-align: middle;
+}
+.select-clave-cipherPage{
+    font-size: 18px;
+    border: 2px solid #0070C0;
+    padding: 10px 15px;
+    margin-left: 5px;
+    cursor: pointer;
+    font-size: 26px;
+}
+.select-clave-cipherPage option {
+    background-color: white;
+    color: #0070C0;
+}
+.select-clave-cipherPage:focus{
+    outline: 0;
+}
+.label-cipherPage {
+    font-size: 1.5rem;
+    margin-top: 20px;
+}
+.box-text-cipherPage {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.form-textarea {
+    width: 100%; /* Ajustado para llenar el contenedor */
+    font-size: 1.5rem;
+    resize: none; /* Cambiado para negar el redimensionamiento vertical */
+    border: 2px solid #0070C0;
+}
+.form-textarea:hover, .form-textarea:focus, .form-textarea:active, .form-textarea:focus-visible{
+    border: 2px solid #007bff;
+    outline-width: 1px;
+    outline-style: solid;
+    outline-color: #007bff;
+}
+.textarea-blocked:hover, .textarea-blocked:focus{
+    outline: none !important;
+    border: 2px solid #0070C0 !important;
+    cursor: default; /* Establece el cursor predeterminado */
+}
+.box-btn-cipherPage {
+    display: flex;
+    justify-content: flex-end; /* Alinea los botones al final */
+    margin-top: 20px;
+}
+.btn-cipherPage {
+    font-size: 20px;
+    padding: 12px 20px;
+    color: white;
+    background-color: #429206;
+    border-radius: 15px;
+    border: none;
+}
+.btn-cipherPage:hover {
+    background-color: #70AD47;
+    cursor: pointer;
+}
+
 /*Para Dispositivos moviles */
 @media only screen and (max-width: 767px){
     /*navbar*/
@@ -452,6 +552,10 @@ border: 1px solid #007bff;
     .content-container{
         padding: 15px 20px;
     }
+    .img-warning{
+        width: 40px;
+        height: 40px;
+    }
     .text-warning{
         font-size: 25px;
     }
@@ -476,7 +580,7 @@ border: 1px solid #007bff;
     }
     .icon-expand-more{
         margin-left: 10px;
-        font-size: 30px !important;
+        font-size: 25px !important;
     }
     .help-menu{
         font-size: 1rem;
@@ -524,6 +628,34 @@ border: 1px solid #007bff;
     .btnRegister{
         font-size: 16px;
         width: 80%;
+    }
+
+    /*página de los cifradores*/
+    .cipherPage-container {
+        padding: 0 50px; /* Reducido el padding para pantallas más pequeñas */
+    }
+    .box-btn-cipherPage {
+        justify-content: center; /* Alinea los botones al centro */
+    }
+    .btn-cipherPage {
+        margin-right: 0; /* Eliminado el margen derecho */
+        margin-bottom: 20px; /* Añadido margen inferior */
+    }
+    .title-cipherPage{
+        margin-top: 60px;
+    }
+    .label-cipherPage{
+        font-size: 1rem;
+    }
+    .form-textarea{
+        font-size: 1rem;
+    }
+    .box-clave-cipherPage{
+        font-size: 18px
+    }
+    .select-clave-cipherPage{
+        padding: 5px 10px;
+        font-size: 1rem;
     }
 }
 
