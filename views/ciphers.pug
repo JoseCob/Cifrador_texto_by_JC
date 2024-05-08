@@ -1,7 +1,7 @@
 extends header 
 
 block content
-    .container-main-ciphers
+    .container-main
         .content-container
             h1.title-content #{title}
             .ciphers-text-box
@@ -28,8 +28,8 @@ block content
                         a(href='/pageHexadecimal' class='cipher-box') Hexadecimal 
 
             script.
-                const helpMenu = document.querySelector('.help-menu');
-                const helpText = document.querySelector('.ciphers-text-box');
+                const helpMenu = document.querySelector('.help-menu');//Selecciona el estilo help-menu
+                const helpText = document.querySelector('.ciphers-text-box');// selecciona el estilo ciphers-text-box
 
                 // Oculta el menú de ayuda al cargar la página
                 helpMenu.style.maxHeight = '0';
@@ -37,15 +37,16 @@ block content
                 // Agrega un evento de clic al texto de ayuda
                 helpText.addEventListener('click', function() {
                     if (helpMenu.style.maxHeight === '0px') {
-                        helpMenu.style.maxHeight = '500px'; // Cambia este valor según la altura máxima que desees
+                        helpMenu.style.maxHeight = '500px'; // Cambia la altura máxima para visualizar el contenido
                     } else {
-                        helpMenu.classList.add('closing'); // Agrega la clase de cierre
+                        helpMenu.classList.add('closing'); // Agrega la clase del cierre de nuestro styles.css
                         setTimeout(function() {
                             helpMenu.style.maxHeight = '0';
                             // Elimina la clase de cierre después de que termine la transición
                             setTimeout(function() {
                                 helpMenu.classList.remove('closing');
-                            }, 0); //El tiempo tiene que coincidir con el tiempo de la transición en CSS
-                        }, 0); // Espera 0 milisegundos antes de establecer la altura máxima en 0
+                            }, 0); //El tiempo tiene que coincidir con el tiempo de la transición en CSS 
+                            //para estimar el tiempo de respuesta para la animación
+                        }, 0); // Espera 0 milisegundos antes de establecer la altura máxima en 0, es decir para que se cierre
                     }
                 });

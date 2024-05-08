@@ -55,7 +55,7 @@ a{
 }
 
 p{
-    font-size: 20px;
+    font-size: 22px;
 }
 
 img{
@@ -71,7 +71,7 @@ nav {
     justify-content: space-between;
     align-items: center;
     background-color: #0070C0;
-    padding: 5px 0;
+    padding: 15px 0;
     user-select: none;
 }
 nav ul {
@@ -127,8 +127,8 @@ i{
 .title-text-header{
     text-align: center; /* Centra el texto del h1 */
     flex: 1; /* Hace que el título ocupe todo el espacio disponible */
-    margin-right: 300px;
-    font-size: 40px;
+    margin-right: 200px;
+    font-size: 50px;
     color: #00B0F0;
     text-shadow: 2px 2px 2px #b3acac; /* Añade un resalte gris */
 }
@@ -196,7 +196,6 @@ i{
     color: white;
     background: red;
     position: absolute; /* Posicionamiento absoluto */
-    vertical-align: middle; /* Centra verticalmente el contenido */
     text-align: center;
     left: 50%;
     transform: translate(-50%, 0%); /* Centra el botón en el centro absoluto */
@@ -209,7 +208,7 @@ i{
 }
 
 /*Estilo para el menú de los Cifradores*/
-.container-main-ciphers{
+.container-main{
     margin-top: 35px;
 }
 .ciphers-text-box{
@@ -218,6 +217,7 @@ i{
     border-radius: 12px;
     padding-left: 15px;
     padding: 10px;
+    margin-top: 10px;
     user-select: none;
     cursor: pointer;
 }
@@ -329,16 +329,19 @@ i{
     justify-content:start; /* Espacio entre los elementos */
     align-items: center; /* Centra verticalmente los elementos */
 }
+.icon-login{
+    font-size: 1.8rem !important;
+}
 .form-label {
     display: block; /* Convierte las etiquetas en elementos de bloque */
     margin: 10px;
-    font-size: 1.2rem;
+    font-size: 1.8rem;
 }
 .form-input{
     width: 92%; /* Ajusta el ancho de los campos de entrada */
     padding: 12px; /* Ajusta el relleno de los campos de entrada según sea necesario */
     margin-bottom: 10px; /* Ajusta el margen inferior de los campos de entrada según sea necesario */
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     border-radius: 5px;
     border: 1px solid #0070C0;
     align-self: center;
@@ -352,11 +355,13 @@ input:hover, input:focus, input:active, input:focus-visible{
 .btn-send {
     border: none;
     border-radius: 8px;
-    font-size: 22px;
+    font-size: 24px;
     color: white;
     background-color: #70AD47;
     width: 50%; /* Ajusta el ancho del botón de enviar */
     padding: 10px; /* Ajusta el relleno del botón de enviar según sea necesario */
+    padding-left: 5px;
+    padding-right: 5px;
     transform: translate(50%, 0%);
     cursor:pointer;
     text-transform: uppercase;
@@ -377,12 +382,12 @@ input:hover, input:focus, input:active, input:focus-visible{
     align-items: center; /* Centra verticalmente los elementos */
 }
 .suggesting-link{
-    margin-left: 6px;
+    margin-left: 8px;
     border-bottom: 1px solid #0070C0; /* Estilo y color de la línea de enlace */
     color: #0070C0;
 }
 .suggesting-link-text{
-    margin-left: 6px;
+    margin-left: 8px;
 }
 .suggesting-link:hover {
     color: #4ba1df; /* Cambiamos el color del texto al pasar el ratón */
@@ -398,7 +403,7 @@ input:hover, input:focus, input:active, input:focus-visible{
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, 28%);
+    transform: translate(-50%, 31.5%);
 }
 .register-row{
     display: flex;
@@ -411,11 +416,14 @@ input:hover, input:focus, input:active, input:focus-visible{
     margin-bottom: 12px; /* Ajusta el margen inferior de cada grupo de formulario según sea necesario */
     margin-left: 30px;
 }
+.form-register{
+    font-size: 1.6rem !important;
+}
 .form-input-register{
     width: 125%; /* Ajusta el ancho de los campos de entrada */
     padding: 12px; /* Ajusta el relleno de los campos de entrada según sea necesario */
     margin-bottom: 10px; /* Ajusta el margen inferior de los campos de entrada según sea necesario */
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     border-radius: 5px;
     border: 1px solid #0070C0;
     align-self: center;
@@ -453,6 +461,12 @@ input:hover, input:focus, input:active, input:focus-visible{
     display: flex;
     flex-direction: column; /* Apila los elementos */
     align-items: center; /* Centra los elementos */
+}
+.messageAlert{
+    margin-top: -10px;
+    margin-bottom: 40px;
+    font-size: 200%;
+    color: #ff0000;
 }
 .form-cipherPage{
     margin-bottom: 50px;
@@ -527,7 +541,7 @@ input:hover, input:focus, input:active, input:focus-visible{
         padding: 5px 0;
     }
     nav ul {
-        margin-left: 1.5px;
+        margin-left: 6px;
     }
     nav ul li {
         margin-right: auto;
@@ -536,7 +550,8 @@ input:hover, input:focus, input:active, input:focus-visible{
     /*header*/
     .left-content{
         padding-right: 15px;
-        max-width: 50%;
+        max-width: 80%;
+        font-size: 10px;
     }
     .contain-header{
         display: flex; /* Usa flexbox para alinear los elementos */
@@ -545,33 +560,44 @@ input:hover, input:focus, input:active, input:focus-visible{
     }
     .title-text-header {
         text-align: end;
-        margin-right: 15px;
+        margin-right: 30px;
+        font-size: 1.8rem;
     }
 
     /*index*/
     .content-container{
+        margin: 15px;
         padding: 15px 20px;
+    }
+    .title-content{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.5rem;
+    }
+    .text-content{
+        font-size: 1rem;
     }
     .img-warning{
         width: 40px;
         height: 40px;
     }
     .text-warning{
-        font-size: 25px;
+        font-size: 1.3rem;
+    }
+    .subtext-warning{
+        font-size: 1rem;
+    }
+    .list-home{
+        font-size: 1rem;
     }
     .start-now{
-        transform: translate(-50%, -15%); /* Centra el botón en el centro absoluto */
-        font-size: 20px;
-        padding: 15px;
+        transform: translate(-50%, 30%); /* Centra el botón en el centro absoluto */
+        font-size: 1rem;
+        padding: 12px;
     }
 
     /*ciphers*/
-    .title-content{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 30px;
-    }
     .ciphers-text-box{
         padding: 5px;
     }
@@ -587,20 +613,40 @@ input:hover, input:focus, input:active, input:focus-visible{
         margin-left: 5px;
     }
     .title-category{
-        font-size: 1.2rem;
+        padding: 10px;
+        font-size: 1rem;
     }
     .cipher-box{
-        font-size: 1.5rem;
+        padding: 10px;
+        font-size: 1.2rem;
     }
 
     /*login*/
     .container-login{
         width: 85%;
     }
+    .icon-login{
+        font-size: 1.4rem !important;
+    }
+    .form-label{
+        font-size: 1.4rem;
+    }
+    .form-input{
+        font-size: 1rem;
+    }
     .btn-send{
-        font-size: 18px;
+        font-size: 1rem;
         width: 80%;
-        transform: translate(12%, 0%);
+        padding-left: 0;
+        padding-right: 0;
+        width: 48%;
+        transform: translate(50%, 0%);
+    }
+    .suggesting-link{
+        font-size: 1rem;
+    }
+    .suggesting-link-text{
+        font-size: 1rem;
     }
 
     /*register*/
@@ -622,8 +668,8 @@ input:hover, input:focus, input:active, input:focus-visible{
         font-size: 1rem;
         margin-left: 10px    ;
     }
-    .label-register{
-        font-size: 1rem;
+    .form-register{
+        font-size: 1.2rem !important;
     }
     .btnRegister{
         font-size: 16px;
@@ -643,6 +689,7 @@ input:hover, input:focus, input:active, input:focus-visible{
     }
     .title-cipherPage{
         margin-top: 60px;
+        font-size: 1.5rem;
     }
     .label-cipherPage{
         font-size: 1rem;
@@ -657,6 +704,9 @@ input:hover, input:focus, input:active, input:focus-visible{
         padding: 5px 10px;
         font-size: 1rem;
     }
+    .messageAlert{
+        font-size: 100%;
+    }
 }
 
 /*Para tabletas y escritorios*/
@@ -667,9 +717,13 @@ input:hover, input:focus, input:active, input:focus-visible{
         justify-content:center; /* Espacio entre los elementos */
         align-items: center; /* Centra verticalmente los elementos */
     }
+    .left-content{
+        font-size: 14px;
+    }
     .title-text-header {
         text-align: end;
         margin-right: 120px;
+        font-size: 2.5rem;
     }
 
     /*index*/
@@ -682,10 +736,17 @@ input:hover, input:focus, input:active, input:focus-visible{
         width: 85%;
         transform: translate(-50%, 28%);
     }
-    .label-register{
-        font-size: 15px;
+    .form-register{
+        font-size: 1rem !important;
+    }
+    .form-label{
+        font-size: 1rem;
     }
     .form-input-register{
-        font-size: 15px;
+        font-size: 1rem;
+
+    }
+    .btnRegister{
+        width: 40% !important;
     }
 }

@@ -6,18 +6,18 @@ block content
         form(action='/login' method='POST')
             .groupForm
                 .groupIcon-label
-                    i.material-symbols-outlined person
+                    i.material-symbols-outlined(class='icon-login') person
                     label(for='user' class='form-label') Usuario
                 input.form-input(type='text' name='user' id='user' placeholder='Agregar usuario', required, autofocus)
             .groupForm
                 .groupIcon-label
-                    i.material-symbols-outlined lock   
+                    i.material-symbols-outlined(class='icon-login') lock   
                     label(for='password' class='form-label') Contraseña
                 input.form-input(type='password' name='password' id='password' placeholder='Agregar contraseña', required)
             .groupForm 
                 button(type='submit' class='btn-send') Iniciar sesión
         hr.line-down
         .line-down-text
-            p ¿No tienes cuenta?
+            p.text-content ¿No tienes cuenta?
             a(href='/register' class='suggesting-link') Registrarse
             p(class='suggesting-link-text') aqui

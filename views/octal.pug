@@ -3,7 +3,8 @@ extends header
 block content
     .cipherPage-container
         h1.title-cipherPage #{title}
-        .cipherPage-box 
+        .cipherPage-box
+            strong.messageAlert Tienes (x) Intentos Para Cifrar
             form(action="#" method='#' class='form-cipherPage')
                 label(for='originalText' class='label-cipherPage') Pegue el texto que desea cifrar aquí:    
                 .box-text-cipherPage 
