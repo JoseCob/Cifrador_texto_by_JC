@@ -1,0 +1,591 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap")
+@import url("https://fonts.googleapis.com/css2?family=Reddit+Mono:wght@200..900&display=swap")
+
+.noto-sans-Noto style
+  font-family: "Noto Sans", sans-serif
+  font-weight: 400
+  font-style: normal
+
+.Reddit-Mono style
+  font-family: "Reddit Mono", sans-serif
+  font-weight: 400
+  font-style: normal
+
+.material-symbols-rounded
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+
+.material-symbols-outlined
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24
+
+body
+  font-family: Arial, Helvetica, sans-serif
+  margin: 0
+  padding: 0
+  width: 100%
+  height: 100%
+  position: relative
+  background-color: #f1eeee
+
+hr
+  border: none
+  height: 2px
+  background-color: #0070C0
+
+h1
+  font-family: "Noto Sans", sans-serif
+
+h2
+  font-family: "Reddit Mono", Arial
+
+a
+  text-decoration: none
+
+p
+  font-size: 22px
+
+img
+  user-select: none
+  pointer-events: none
+
+nav
+  text-align: center
+  display: flex
+  flex-wrap: wrap
+  justify-content: space-between
+  align-items: center
+  background-color: #0070C0
+  padding: 15px 0
+  user-select: none
+  ul
+    display: flex
+    list-style-type: none
+    margin-left: auto
+    padding: 0
+  ul li
+    display: inline-block
+    margin-right: 20px
+  ul li a
+    display: flex
+    color: white
+    text-decoration: none
+    font-weight: bold
+    padding: 5px 10px
+    border-radius: 20px
+    transition: background-color 0.3s
+  ul li a:hover
+    background-color: white
+    color: black
+
+i
+  margin-top: -4px
+
+.container-header
+  margin-top: 42px
+.contain-header
+  display: flex
+  justify-content: space-between
+  align-items: center
+.left-content
+  background-color: #70AD47
+  color: white
+  display: flex
+  align-items: center
+  border-top-right-radius: 20px
+  border-bottom-right-radius: 20px
+  padding-right: 25px
+  user-select: none
+.arrow-icon-left
+  margin-top: 0.5px
+  margin-right: 5px
+.title-text-header
+  text-align: center
+  flex: 1
+  margin-right: 200px
+  font-size: 50px
+  color: #00B0F0
+  text-shadow: 2px 2px 2px #b3acac
+
+.content-container
+  position: relative
+  margin-top: 35px
+  margin-bottom: 35px
+  margin-left: 50px
+  margin-right: 50px
+  padding: 30px 40px
+  border: 2px solid #70AD47
+  background-color: white
+  font-size: 22px
+.title-content
+  margin-top: -10px
+  font-size: 35px
+  font-weight: 900
+.container-warning
+  display: flex
+  justify-content: space-between
+  align-items: center
+.warning
+  display: flex
+  align-items: center
+.img-warning
+  margin-right: 5px
+  width: 80px
+  height: 80px
+.text-warning
+  user-select: none
+  font-size: 50px
+  font-weight: 600
+  animation: destello 5s infinite alternate
+@keyframes destello
+  0%
+    color: rgb(210, 4, 4) /* Color amarillo al inicio */
+    font-weight: bold
+  50%
+    color: #e4b311 /* Color normal a la mitad de la animación */
+  100%
+    color: rgba(207, 9, 9, 0.868) /* Color amarillo al final */
+    font-weight: bold
+.subtext-warning
+  margin-top: -2px
+
+.list-home
+  line-height: 1.8
+.subtext-warning
+  margin-top: -2px
+.list-home
+  line-height: 1.8
+.start-now
+  text-transform: uppercase
+  font-size: 30px
+  border-radius: 20px
+  padding: 20px
+  color: white
+  background: red
+  position: absolute
+  text-align: center
+  left: 50%
+  transform: translate(-50%, 0%)
+  border: none
+  user-select: none
+.start-now:hover
+  background-color: rgb(199, 19, 19)
+  cursor: pointer
+
+.container-main
+  margin-top: 35px
+.ciphers-text-box
+  display: inline-block
+  background-color: #e2e1e1
+  border-radius: 12px
+  padding-left: 15px
+  padding: 10px
+  margin-top: 10px
+  user-select: none
+  cursor: pointer
+.ciphers-text-box:hover
+  background-color: #868686
+  color: white
+.text-help
+  font-size: 35px
+  font-family: 'Times New Roman'
+.icon-expand-more
+  font-size: 40px !important
+  display: inline-block
+  vertical-align: middle
+  margin-left: 40px
+.help-menu
+  line-height: 1.8
+  margin-left: 15px
+  font-size: 28px
+  max-height: 0
+  overflow: hidden
+  transition: max-height 500ms linear
+.help-menu.closing
+  transition: max-height 0ms linear
+.container-category
+  text-align: center
+  margin-top: 40px
+.title-category
+  display: inline-block
+  padding: 20px 40px
+  background-color: #e2e1e1
+  border-radius: 18px
+  width: 65%
+  font-weight: 900
+  font-size: 26px
+.content-category
+  margin-top: 12px
+  display: flex
+  justify-content: space-between
+  align-items: center
+  flex-wrap: wrap
+.category-ciphers
+  width: 100%
+  display: flex
+  justify-content: space-between
+  flex-wrap: wrap
+.cipher-box
+  margin: 30px
+  padding: 15px
+  background-color: #AAD18C
+  border: 2px solid #AAD18C
+  border-radius: 16px
+  color: white
+  font-size: 3rem
+  text-align: center
+  vertical-align: middle
+  text-shadow: 2px 2px 2px rgb(136, 130, 130)
+  cursor: pointer
+  user-select: none
+  width: 300px
+  flex: 1
+.cipher-box:hover
+  background-color: #70AD47
+  border: 2px solid #70AD47
+
+.container-login
+  background-color: hsl(0, 0%, 100%)
+  border: 1px solid #0070C0
+  border-radius: 12px
+  width: 600px
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, 40%)
+.titlePage
+  font-size: 2rem
+  justify-content: center
+  align-items: center
+  display: flex
+  background-color: #0070C0
+  border-top-left-radius: 10px
+  border-top-right-radius: 10px
+  padding: 2px
+  color: white
+  width: calc(100% + -3px)
+  text-transform: uppercase
+  margin-top: auto
+  margin-bottom: 25px
+.groupForm
+  margin: 30px
+  margin-top: 20px
+  margin-bottom: 20px
+.groupIcon-label
+  display: flex
+  justify-content: start
+  align-items: center
+.icon-login
+  font-size: 1.8rem !important
+.form-label
+  display: block
+  margin: 10px
+  font-size: 1.8rem
+.form-input
+  width: 92%
+  padding: 12px
+  margin-bottom: 10px
+  font-size: 1.3rem
+  border-radius: 5px
+  border: 1px solid #0070C0
+  align-self: center
+input:hover, input:focus, input:active, input:focus-visible
+  border: 1px solid #007bff
+  outline-width: 1px
+  outline-style: solid
+  outline-color: #007bff
+.btn-send
+  border: none
+  border-radius: 8px
+  font-size: 24px
+  color: white
+  background-color: #70AD47
+  width: 50%
+  padding: 10px
+  padding-left: 5px
+  padding-right: 5px
+  transform: translate(50%, 0%)
+  cursor: pointer
+  text-transform: uppercase
+  margin-bottom: 20px
+.btn-send:hover
+  background-color: #429206
+  color: #e2e1e1
+.line-down
+  display: flex
+  transform: translate(0%, 0%)
+  width: 100%
+.line-down-text
+  display: flex
+  justify-content: center
+  align-items: center
+.suggesting-link
+  margin-left: 8px
+  border-bottom: 1px solid #0070C0
+  color: #0070C0
+.suggesting-link-text
+  margin-left: 8px
+.suggesting-link:hover
+  color: #4ba1df
+  border-bottom-color: #4ba1df
+
+.container-register
+  background-color: hsl(0, 0%, 100%)
+  border: 1px solid #0070C0
+  border-radius: 12px
+  width: 900px
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, 31.5%)
+.register-row
+  display: flex
+  justify-content: center
+  align-items: center
+.groupForm-register
+  margin: 120px
+  margin-top: 10px
+  margin-bottom: 12px
+  margin-left: 30px
+.form-register
+  font-size: 1.6rem !important
+.form-input-register
+  width: 125%
+  padding: 12px
+  margin-bottom: 10px
+  font-size: 1.3rem
+  border-radius: 5px
+  border: 1px solid #0070C0
+  align-self: center
+.groupForm-btnRegister
+  display: flex
+  justify-content: center
+  align-items: center
+  margin-top: 12px
+.btnRegister
+  width: 45% !important
+  transform: translate(2%, 0%) !important
+
+.cipherPage-container
+  max-width: 1330px
+  margin: auto
+  padding: 0 20px
+  box-sizing: border-box
+  position: relative
+  top: 50%
+  transform: translateY(0%)
+  line-height: 1.5
+.title-cipherPage
+  display: flex
+  justify-content: center
+  align-items: center
+  margin-top: 40px
+  margin-bottom: 40px
+.cipherPage-box 
+  display: flex
+  flex-direction: column
+  align-items: center
+.messageAlert
+  margin-top: -10px
+  margin-bottom: 40px
+  font-size: 200%
+  color: #ff0000
+.form-cipherPage
+  margin-bottom: 50px
+.box-clave-cipherPage
+  margin-bottom: 20px
+  font-size: 30px
+.select-clave-cipherPage
+  font-size: 18px
+  border: 2px solid #0070C0
+  padding: 10px 15px
+  margin-left: 5px
+  cursor: pointer
+  font-size: 26px
+.select-clave-cipherPage option
+  background-color: white
+  color: #0070C0
+.select-clave-cipherPage:focus
+  outline: 0
+.label-cipherPage
+  font-size: 1.5rem
+.box-text-cipherPage
+  margin-top: 20px
+  margin-bottom: 20px
+.form-textarea
+  width: 100%
+  font-size: 1.5rem
+  resize: none
+  border: 2px solid #0070C0
+.form-textarea:hover, .form-textarea:focus, .form-textarea:active, .form-textarea:focus-visible
+  border: 2px solid #007bff
+  outline-width: 1px
+  outline-style: solid
+  outline-color: #007bff
+.textarea-blocked:hover, .textarea-blocked:focus
+  outline: none !important
+  border: 2px solid #0070C0 !important
+  cursor: default
+.box-btn-cipherPage
+  display: flex
+  justify-content: flex-end
+  margin-top: 20px
+.btn-cipherPage
+  font-size: 20px
+  padding: 12px 20px
+  color: white
+  background-color: #429206
+  border-radius: 15px
+  border: none
+.btn-cipherPage:hover
+  background-color: #70AD47
+  cursor: pointer
+
+@media only screen and (max-width: 767px)
+  nav
+    padding: 5px 0
+  nav ul
+    margin-left: 6px
+  nav ul li
+    margin-right: auto
+
+  .left-content
+    padding-right: 15px
+    max-width: 80%
+    font-size: 10px
+  .contain-header
+    display: flex
+    justify-content: center
+    align-items: center
+  .title-text-header
+    text-align: end
+    margin-right: 30px
+    font-size: 1.8rem
+
+  .content-container
+    margin: 15px
+    padding: 15px 20px
+  .title-content
+    display: flex
+    justify-content: center
+    align-items: center
+    font-size: 1.5rem
+  .text-content
+    font-size: 1rem
+  .img-warning
+    width: 40px
+    height: 40px
+  .text-warning
+    font-size: 1.3rem
+  .subtext-warning
+    font-size: 1rem
+  .list-home
+    font-size: 1rem
+  .start-now
+    transform: translate(-50%, 30%)
+    font-size: 1rem
+    padding: 12px
+
+  .ciphers-text-box
+    padding: 5px
+  .text-help
+    font-size: 22px
+  .icon-expand-more
+    margin-left: 10px
+    font-size: 25px !important
+  .help-menu
+    font-size: 1rem
+    margin-left: 5px
+  .title-category
+    padding: 10px
+    font-size: 1rem
+  .cipher-box
+    padding: 10px
+    font-size: 1.2rem
+
+  .container-login
+    width: 85%
+  .icon-login
+    font-size: 1.4rem !important
+  .form-label
+    font-size: 1.4rem
+  .form-input
+    font-size: 1rem
+  .btn-send
+    font-size: 1rem
+    width: 80%
+    padding-left: 0
+    padding-right: 0
+    width: 48%
+    transform: translate(50%, 0%)
+  .suggesting-link
+    font-size: 1rem
+  .suggesting-link-text
+    font-size: 1rem
+
+  .container-register
+    width: 92%
+    transform: translate(-50%, 22%)
+  .register-row
+    display: inline
+    justify-content: start
+    align-items: center
+  .groupForm-register
+    margin: 10px
+  .form-input-register
+    width: 90%
+    padding: 10px
+    font-size: 1rem
+    margin-left: 10px
+  .form-register
+    font-size: 1.2rem !important
+  .btnRegister
+    font-size: 16px
+    width: 80%
+
+  .cipherPage-container
+    padding: 0 50px
+  .box-btn-cipherPage
+    justify-content: center
+  .btn-cipherPage
+    margin-right: 0
+    margin-bottom: 20px
+  .title-cipherPage
+    margin-top: 60px
+    font-size: 1.5rem
+  .label-cipherPage
+    font-size: 1rem
+  .form-textarea
+    font-size: 1rem
+  .box-clave-cipherPage
+    font-size: 18px
+  .select-clave-cipherPage
+    padding: 5px 10px
+    font-size: 1rem
+  .messageAlert
+    font-size: 100%
+
+@media only screen and (min-width: 768px) and (max-width:1024px)
+  .contain-header
+    display: flex
+    justify-content: center
+    align-items: center
+  .left-content
+    font-size: 14px
+  .title-text-header
+    text-align: end
+    margin-right: 120px
+    font-size: 2.5rem
+
+  .content-container
+    padding: 20px 30px
+
+  .container-register
+    width: 85%
+    transform: translate(-50%, 28%)
+  .form-register
+    font-size: 1rem !important
+  .form-label
+    font-size: 1rem
+  .form-input-register
+    font-size: 1rem
+  .btnRegister
+    width: 40% !important
