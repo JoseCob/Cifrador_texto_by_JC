@@ -1,6 +1,6 @@
 //header.pug
 doctype html 
-html 
+html(lang='en')
     head
         title #{title}
         link(rel='stylesheet', href='/css/styles.css')
@@ -21,9 +21,10 @@ html
                     a(href='/login') 
                         i.material-symbols-outlined account_circle
                         span &nbsp;Iniciar Sesión
-                li
-                    a(href='#')
-                        i.material-symbols-rounded logout
+                if user != ''
+                    li
+                        a(href='/logout')
+                            i.material-symbols-rounded logout
                         
         .container-header
             hr

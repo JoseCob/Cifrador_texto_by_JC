@@ -2,7 +2,8 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    res.render('octal', {title: 'Cifrador Octal'});
+    const user = req.user != null ? `Cifrador de Textos ${req.user.userName}`: ''; // Verificar si el usuario ha iniciado sesión, si no tiene la sesion activa, quita el icono del logout
+    res.render('octal', {title: 'Cifrador Octal', user});
 });
 
 module.exports = router;

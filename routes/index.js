@@ -5,7 +5,8 @@ const router = express.Router();
 // Ruta que llama el inicio de la página
 //El método render('index'), visualiza el index.pug con el parametro '/' que fue declarado en el archivo server.js como: "app.use('/', router);"
 router.get('/', (req, res) => { //se obtiene desde el servidor
-    res.render('index', { title: 'Cifrador de textos'});//Renderiza el pug, "La vista del usuario, con su respectivo titulo de la página"
+    //Renderiza el pug, "La vista del usuario, con su respectivo titulo de la página"
+    res.render('index', { title: req.user != null? `Cifrador de Textos ${req.user.userName}`: '¡Bienvenido! a la página ENCRTEXT.', user: req.user != null ? `¡Bienvenido, ${req.user.userName}! a la página ENCRTEXT.`: ''});
 });
   
 module.exports = router;

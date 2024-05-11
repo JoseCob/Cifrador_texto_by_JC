@@ -1,11 +1,11 @@
-const mysql2 = require('mysql2');
-const dotenv = require('dotenv');
+const mysql2 = require('mysql2'); // requiere Utilizar MySQL2
+const dotenv = require('dotenv'); // requiere Utilizar variables de entorno desde un archivo ".env"
 
-// Configura DotEnv
+//Configura dotenv para cargar las variables de entorno desde un archivo ".env"
 dotenv.config();
 
-// Crear pool de conexiones a la base de datos MySQL
-const db = mysql2.createPool({
+// /Crea la conexión pool de la base de datos mediante la constante db y mysql2
+const db = mysql2.createPool({ //Establece la conexión de la base de datos con el método createPool 
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
@@ -16,12 +16,6 @@ const db = mysql2.createPool({
     queueLimit: 0
 });
 
-/*Obtiene la conexión pool cada vez que quiera interactuar con la base de datos MySQL.
-Con el fin de evitar establecer una nueva conexión cada vez que quiera utilizar la bd.*/
-function mysqlConnection(){//Se obtiene el pool de la conexión, mediante el metodo mysqlConnection()
-    return db.promise().getConnection();
-}
+console.log('Se conecto la base de datos exitosamente'); // Muestra mensaje que se conecto a la base de datos exitosamente 
 
-module.exports = {
-    mysqlConnection
-}
+module.exports = db.promise(); //Exportamos la constante db con el promise, para permitir funciones con operaciones asíncronas
