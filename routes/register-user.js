@@ -17,7 +17,8 @@ router.post('/', async (req, res) => {
         // Verificar si el usuario ya está registrado por medio del nombre de usuario en la bd
         const userNameExistent = await users.getuserName(userName);
         if(userNameExistent) {
-            return res.status(400).send('El usuario ya está registrado');
+            console.log('El usuario:', userName, '¡Ya existe en la base de datos!'); //Mensaje en la terminal del usuario ya existente
+            return res.status(400).send('Nombre de usuario ya registrado');
         }
         
         //hash de la contraseña generado en "authentication.js"
@@ -34,7 +35,6 @@ router.post('/', async (req, res) => {
         res.redirect('/login');
 
     } catch (error) {
-
         console.error(error.message);
         res.status(500).send('Error interno del servidor');
     }

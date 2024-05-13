@@ -1,3 +1,4 @@
+//database/conexion.js
 const mysql2 = require('mysql2'); // requiere Utilizar MySQL2
 const dotenv = require('dotenv'); // requiere Utilizar variables de entorno desde un archivo ".env"
 

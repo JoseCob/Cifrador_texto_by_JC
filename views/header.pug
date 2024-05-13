@@ -1,6 +1,6 @@
 //header.pug
 doctype html 
-html(lang='en')
+html
     head
         title #{title}
         link(rel='stylesheet', href='/css/styles.css')
@@ -17,11 +17,12 @@ html(lang='en')
                     a(href='/ciphers')
                         i.material-symbols-outlined encrypted
                         span &nbsp;Cifradores
-                li
-                    a(href='/login') 
-                        i.material-symbols-outlined account_circle
-                        span &nbsp;Iniciar Sesión
-                if user != ''
+                if !user
+                    li
+                        a(href='/login') 
+                            i.material-symbols-outlined account_circle
+                            span &nbsp;Iniciar Sesión
+                else
                     li
                         a(href='/logout')
                             i.material-symbols-rounded logout

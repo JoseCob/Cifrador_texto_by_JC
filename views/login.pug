@@ -3,6 +3,11 @@ extends header
 block content
     .container-login
         h1(class='titlePage') #{title}
+        if messages
+                each message in messages
+                    .container-message-error
+                        img.message-img-error(src='./Advertencia.png', alt='')
+                        p.message-login-error #{message}
         form(action='/login' method='POST')
             .groupForm
                 .groupIcon-label

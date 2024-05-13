@@ -7,29 +7,29 @@ block content
             .register-row
                 .groupForm-register
                     .form-label
-                        label.label-register(class='form-register' for='firstName') Nombre de pila
+                        label(class='form-register' for='firstName') Nombre de pila
                     input.form-input-register(type='text' name='firstName' id='firstName' placeholder='Agregar Nombre', required, autofocus)
                 .groupForm-register
                     .form-label
-                        label.label-register(class='form-register' for='lastName') Apellido
+                        label(class='form-register' for='lastName') Apellido
                     input.form-input-register(type='text' name='lastName' id='lastName' placeholder='Agregar Apellido', required)
             .register-row
                 .groupForm-register
                     .form-label
-                        label.label-register(class='form-register' for='userName') Usuario
+                        label(class='form-register' for='userName') Usuario
                     input.form-input-register(type='text' name='userName' id='userName' placeholder='Crear Nombre de Usuario', required) 
                 .groupForm-register
                     .form-label
-                        label.label-register(class='form-register' for='email') Correo
+                        label(class='form-register' for='email') Correo
                     input.form-input-register(type='email' name='email' id='email' placeholder='Agregar Correo Electrónico', required)
             .register-row
                 .groupForm-register
                     .form-label
-                        label.label-register(class='form-register' for='password') Contraseña
-                    input.form-input-register(type='password' name='password' id='password' placeholder='Crear Contraseña', required) 
+                        label(class='form-register' for='password') Contraseña
+                    input.form-input-register(type='password' name='password' id='password' placeholder='Crear Contraseña', autocomplete='off', required) 
                 .groupForm-register
                     .form-label
-                        label.label-register(class='form-register' for='confirmPassword') Confirmar Contraseña
+                        label(class='form-register' for='confirmPassword') Confirmar Contraseña
                     input.form-input-register(type='password' name='confirmPassword' id='confirmPassword' placeholder='Confirmar Contraseña', autocomplete='off', required)
             .groupForm-btnRegister
                 button(type='submit' class='btn-send btnRegister') Crear Cuenta

@@ -1,43 +1,39 @@
-/* Este script, se encarga de registrar nuevos usuarios con la ayuda de la vista llama: "register.pug", 
-genera consultas que obtiene el nombre del usuario y su respectivo ID, con el fin de poder utilizar estos recursos en algún momento de la página */
-const db  = require('../conexion');//requiere llamar la constante db que declaramos en el archivo: "conexion.js" para insertar y consultar datos del MySQL
+const db = require('../conexion'); //Establece la conexión de la base de datos
+let connection; //Variable para llamar la conexión de la base de datos
 
-//Función para insertar un nuevo usuario en la base de datos de MySQL
-async function register(firstName, lastName, userName, email, password){
-    try {
-        const connection = await db.getConnection();
-        await connection.query('INSERT INTO users (firstName, lastName, userName, email, passwordHash) VALUES (?,?,?,?,?)', [firstName, lastName, userName, email, password]);
-        console.log('Usuario insertado correctamente'); //Muestra en pantalla que se registro un usuario exitosamente
-        connection.release(); // Liberar la conexión
-    } catch (error) {
-        console.error('Error al insertar usuario:', error); //Muestra un mensaje en pantalla, de que hubo ub problema al registrar el usuario
-        throw error;
-    } 
+// Esta función llama la conexión de la base de datos
+async function initializeConnection() {
+    // se establece la variable connection en espera de la variable db con el método getConnection()
+    connection = await db.getConnection();
 }
 
-// Función para obtener un usuario por su nombre de usuario
-async function getuserName(userName) { //Función que obtiene el usuario con solo el nombre de usuario "userName" de MySQL
+//Función que registra los usuarios
+async function register(firstName, lastName, userName, email, password) {
     try {
-        const connection = await db.getConnection();
-        const [results] = await connection.query( //Espera la consulta mediante la constante conection con el metodo qry= "query"
-            'SELECT * FROM users WHERE userName = ?', [userName]
-        );
-        connection.release(); // Liberar la conexión
+        await connection.query('INSERT INTO users (firstName, lastName, userName, email, passwordHash) VALUES (?,?,?,?,?)', [firstName, lastName, userName, email, password]);
+        console.log('Usuario:', userName, '¡registrado correctamente!');
+    } catch (error) {
+        console.error('Error al insertar usuario:', error);
+        throw error;
+    }
+}
+
+//Función que obtiene el nombre de usuario
+async function getuserName(userName) {
+    try {
+        const [results] = await connection.query('SELECT * FROM users WHERE userName = ?', [userName]);
         return results[0];
-    } catch (error){
+    } catch (error) {
         console.error('Error al obtener el nombre del usuario: ', error);
         throw error;
     }
 }
 
-// Función para obtener el ID del usuario
-async function getIdUser(id){// Función  que obtiene por id
-    try{
-        const connection = await db.getConnection();
-        const [results] = await connection.query(
-            'SELECT * FROM users WHERE id = ?', [id]
-        );
-        connection.release(); // Liberar la conexión
+//Función que obtiene el Id del usuario
+async function getIdUser(id) {
+    try {
+        const [results] = await connection.query('SELECT * FROM users WHERE id = ?', [id]);
+        console.log('ID del Usuario recuperado de la base de datos:', results[0]);
         return results[0];
     } catch (error) {
         console.error('Error al obtener el ID del usuario: ', error);
@@ -46,7 +42,8 @@ async function getIdUser(id){// Función  que obtiene por id
 }
 
 module.exports = {
+    initializeConnection,
     register,
     getuserName,
     getIdUser
-}
+};

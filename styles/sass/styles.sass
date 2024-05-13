@@ -198,9 +198,9 @@ i
   font-size: 28px
   max-height: 0
   overflow: hidden
-  transition: max-height 500ms linear
+  transition: max-height 300ms linear
 .help-menu.closing
-  transition: max-height 0ms linear
+  transition: max-height 300ms linear
 .container-category
   text-align: center
   margin-top: 40px
@@ -251,6 +251,17 @@ i
   top: 50%
   left: 50%
   transform: translate(-50%, 40%)
+.container-message-error
+  display: flex
+  justify-content: center
+  align-items: center
+.message-login-error
+  margin-left: 10px
+  color: #ff0000
+  font-size: 24px
+.message-img-error
+  width: 40px
+  height: auto
 .titlePage
   font-size: 2rem
   justify-content: center
@@ -386,7 +397,7 @@ input:hover, input:focus, input:active, input:focus-visible
 .messageAlert
   margin-top: -10px
   margin-bottom: 40px
-  font-size: 200%
+  font-size: 2.3vh
   color: #ff0000
 .form-cipherPage
   margin-bottom: 50px
@@ -396,7 +407,7 @@ input:hover, input:focus, input:active, input:focus-visible
 .select-clave-cipherPage
   font-size: 18px
   border: 2px solid #0070C0
-  padding: 10px 15px
+  padding: 5px 10px
   margin-left: 5px
   cursor: pointer
   font-size: 26px
@@ -443,7 +454,7 @@ input:hover, input:focus, input:active, input:focus-visible
   nav
     padding: 5px 0
   nav ul
-    margin-left: 6px
+    margin-left: auto
   nav ul li
     margin-right: auto
 
@@ -503,10 +514,15 @@ input:hover, input:focus, input:active, input:focus-visible
 
   .container-login
     width: 85%
+  .message-login-error
+    font-size: 1.1rem
+  .message-img-error
+    width: 30px
+    height: auto
   .icon-login
-    font-size: 1.4rem !important
+    font-size: 1.5rem !important
   .form-label
-    font-size: 1.4rem
+    font-size: 1.3rem
   .form-input
     font-size: 1rem
   .btn-send
@@ -536,7 +552,7 @@ input:hover, input:focus, input:active, input:focus-visible
     font-size: 1rem
     margin-left: 10px
   .form-register
-    font-size: 1.2rem !important
+    font-size: 1.3rem !important
   .btnRegister
     font-size: 16px
     width: 80%
@@ -561,7 +577,7 @@ input:hover, input:focus, input:active, input:focus-visible
     padding: 5px 10px
     font-size: 1rem
   .messageAlert
-    font-size: 100%
+    font-size: 1rem
 
 @media only screen and (min-width: 768px) and (max-width:1024px)
   .contain-header
@@ -574,17 +590,17 @@ input:hover, input:focus, input:active, input:focus-visible
     text-align: end
     margin-right: 120px
     font-size: 2.5rem
-
   .content-container
     padding: 20px 30px
-
   .container-register
     width: 85%
     transform: translate(-50%, 28%)
+  .register-row
+    justify-content: center
+    align-items: end
+    display: flex
   .form-register
-    font-size: 1rem !important
-  .form-label
-    font-size: 1rem
+    font-size: 1.3rem !important
   .form-input-register
     font-size: 1rem
   .btnRegister

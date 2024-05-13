@@ -6,7 +6,7 @@ const dotenv = require('dotenv'); //cargar variables de entorno desde un archivo
 dotenv.config();
 
 //Función para la autentificación del token del usuario registrado con temporizador de 1 hora
-async function authentication(req, res, next){
+async function authenticate(req, res, next){
     //constante que verifica si hay un token en las cookies de la solicitud
     const token = req.cookies.token;
 
@@ -40,7 +40,7 @@ async function getHash(passwordString) {
     if (!passwordString) {
         throw new Error('No se proporcionó una contraseña para generar el hash.');
     }
-    const saltRounds = parseInt(process.env.PASSWORD_SALT_ROUNDS);
+    const saltRounds = parseInt(process.env.PASSWORD_SALT_ROUNDS);//Importante tenerlo en el .env para generar el salto de rondas de la contraseña
     if (isNaN(saltRounds)) {
         throw new Error('El número de rondas de sal no está definido correctamente.');
     }
@@ -50,14 +50,14 @@ async function getHash(passwordString) {
 
 //Función que compara la constraseña antes de generar el hash
 async function comparePassword(passwordString, dbHash) { /*Función que se encarga de comparar una contraseña proporcionada en texto sin cifrar 
-Tomando 2 argumentos: passwordString que contiene el texto sin cifrar y dbHash que es el hash de la contraseña almacenada en la base de datos. */
+    Tomando 2 argumentos: passwordString que contiene el texto sin cifrar y dbHash que es el hash de la contraseña almacenada en la base de datos. */
     const compareHashes = await bcrypt.compare(passwordString, dbHash); /* Constante 'compareHashes' que compara la contraseña en texto sin cifrar 
-    con el hash de contraseña almacenado en la base de datos mediante el argumento dbHash */    
+    con el hash de contraseña almacenado en la base de datos mediante el argumento dbHash */
     return compareHashes; // Devuelve la comparación de la contraseña, si coinciden o no coinciden 
 }
 
 module.exports = {
-    authentication,
+    authenticate,
     generateToken,
     getHash,
     comparePassword
