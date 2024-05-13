@@ -8,7 +8,7 @@ block content
             form(action="#" method='#' class='form-cipherPage')
                 label(for='originalText' class='label-cipherPage') Pegue el texto que desea cifrar aquí:    
                 .box-text-cipherPage 
-                    textarea.form-textarea(name='originalText' id='originalText' rows='12' cols='60' placeholder='Introducir Texto para cifrar' required autofocus)
+                    textarea.form-textarea(name='originalText' id='originalText' rows='12' cols='60' placeholder='Introducir Texto para cifrar' maxlength='1000' required autofocus)
                 .box-btn-cipherPage
                     button(type='submit' class='btn-cipherPage') Cifrar Texto
 

@@ -5,7 +5,7 @@ block content
         h1.title-cipherPage #{title}
         .cipherPage-box
             strong.messageAlert Tienes (x) Intentos Para Cifrar
-            form(action="#" method='#' class='form-cipherPage')
+            form(action="/otherEncryptors" method='POST' class='form-cipherPage')
                 label(for='originalText' class='label-cipherPage') Pegue el texto que desea cifrar aquí:    
                 .box-text-cipherPage 
                     textarea.form-textarea(name='originalText' id='originalText' rows='12' cols='60' placeholder='Introducir Texto para cifrar' required autofocus)

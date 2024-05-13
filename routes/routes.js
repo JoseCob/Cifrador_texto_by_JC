@@ -2,6 +2,7 @@
 const express = require('express');
 const router = express.Router();
 const cesarController = require('../controllers/cesarController');//Controlador para cifrar en Cesar
+const otherEncryptors = require('../controllers/otherEncryptors');//Controlador de otros cifradores 
 
 // Importa las rutas especificas de los archivos js en la carpeta routes
 const index = require('./index');// Llama al archivo index.js con la variable index
@@ -31,7 +32,8 @@ router.use('/pageHexadecimal', cipherHexadecimal);
 
 /*Rutas que llaman las operaciones de cifrado*/
 //Ruta del cifrado Cesar
-router.post('/encrypt-cesar', cesarController.cifrarTexto);//Llamamos al controlador y la función para cifrar texto en cesar
+router.post('/encrypt-cesar', cesarController.encryptText);//Llamamos al controlador para cifrar en Cesar y la función para cifrar texto a cesar
+router.post('/otherEncryptors', otherEncryptors.miscellaneousCiphers)
 
 /*Es necesario incluir el enrutador, para manejar las solicitudes HTTP y definir las rutas, 
 para que otros archivos de la propia aplicación puedan ser utilizados*/
