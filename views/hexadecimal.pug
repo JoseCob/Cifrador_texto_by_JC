@@ -8,13 +8,40 @@ block content
             form(action="/otherEncryptors" method='POST' class='form-cipherPage')
                 label(for='originalText' class='label-cipherPage') Pegue el texto que desea cifrar aquí:    
                 .box-text-cipherPage 
-                    textarea.form-textarea(name='originalText' id='originalText' rows='12' cols='60' placeholder='Introducir Texto para cifrar' required autofocus)
+                    textarea.form-textarea(name='originalText' id='originalText' rows='12' cols='60' placeholder='Introducir Texto para cifrar' maxlength='1000' oninput='limitTextarea(this, 1000)' autofocus)
+                    input(type='hidden' name='cipherType' value='hexadecimal')
                 .box-btn-cipherPage
                     button(type='submit' class='btn-cipherPage') Cifrar Texto
 
-            form(action='#' method='#' class='form-cipherPage')
-                label(for='texthexadecimal' class='label-cipherPage') Copie el texto Cifrado: 
+            .form-cipherPage
+                label(for='jointEncryption' class='label-cipherPage') Copie el texto Cifrado: 
                 .box-text-cipherPage 
-                    textarea.form-textarea(class='textarea-blocked' name='texthexadecimal' id='texthexadecimal' rows='12' cols='60' readonly)
+                    textarea.form-textarea(class='textarea-blocked' name='jointEncryption' id='jointEncryption' rows='12' cols='60' readonly)= textEncryption
                 .box-btn-cipherPage
-                    button(type='submit' class='btn-cipherPage') Copiar Texto 
+                    button(onclick='copyText()', type='button' class='btn-cipherPage') Copiar Texto
+    
+    script.
+        //Funcion para copiar el texto en el textarea del cifrado
+        function copyText() {
+            const jointEncryption = document.getElementById('jointEncryption');
+            jointEncryption.select();
+            document.execCommand('copy');//Comando para copiar con el botón
+        }
+    
+        // Obtener el valor del parámetro textEncryption de la URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const textEncryption = urlParams.get('textEncryption');
+    
+        // Mostrar el texto cifrado en el textarea
+        if (textEncryption) {
+            document.getElementById('jointEncryption').value = decodeURIComponent(textEncryption);
+        }
+
+        //Limita el textarea a 1000 caracteres
+        function limitTextarea(element, maxLength) {
+            //Verifica si la longitud del texto actual en el textarea es mayor que la longitud máxima permitida.
+            if (element.value.length > maxLength) {
+                //Si el texto excede el límite, se recorta el texto a la longitud máxima.
+                element.value = element.value.slice(0, maxLength);
+            }
+        }

@@ -12,8 +12,12 @@ async function miscellaneousCiphers(req, res) {
         // Redirige a la página correspondiente según el tipo de cifrado
         if (cipherType === 'octal') {
             return res.redirect(`/pageOctal?textEncryption=`);
+
         } else if (cipherType === 'hexadecimal') {
             return res.redirect(`/pageHexadecimal?textEncryption=`);
+
+        } else if (cipherType === 'base64') {
+            return res.redirect(`/pageBase64?textEncryption=`);
         }
     }
 
@@ -22,8 +26,13 @@ async function miscellaneousCiphers(req, res) {
     // Realiza el cifrado según el tipo especificado
     if (cipherType === 'octal') {
         textEncrypted = cipherToOctal(originalText);
+
     } else if (cipherType === 'hexadecimal') {
         textEncrypted = cipherToHexadecimal(originalText);
+
+    } else if (cipherType === 'base64') {
+        textEncrypted = cipherToBase64(originalText);
+
     } else {
         console.error('Tipo de cifrado no válido:', cipherType);
         return res.status(400).send('Tipo de cifrado no válido');
@@ -35,8 +44,12 @@ async function miscellaneousCiphers(req, res) {
         // Redirige a la página correspondiente según el tipo de cifrado
         if (cipherType === 'octal') {
             return res.redirect(`/pageOctal?textEncryption=`);
+
         } else if (cipherType === 'hexadecimal') {
             return res.redirect(`/pageHexadecimal?textEncryption=`);
+
+        }else if (cipherType === 'base64') {
+            return res.redirect(`/pageBase64?textEncryption=`);
         }
     }
 
@@ -47,9 +60,14 @@ async function miscellaneousCiphers(req, res) {
         // Redirige a la página correspondiente según el tipo de cifrado
         if (cipherType === 'octal') {
             res.redirect(`/pageOctal?textEncryption=${encodeURIComponent(textEncrypted)}`);
+
         } else if (cipherType === 'hexadecimal') {
             res.redirect(`/pageHexadecimal?textEncryption=${encodeURIComponent(textEncrypted)}`);
+
+        } else if (cipherType === 'base64') {
+            res.redirect(`/pageBase64?textEncryption=${encodeURIComponent(textEncrypted)}`);
         }
+
     } catch (error) {
         console.error('Error al cifrar y almacenar el texto:', error);
         res.status(500).send(error.message);
@@ -76,10 +94,24 @@ function cipherToOctal(originalText) {
 function cipherToHexadecimal(originalText) {
     let textHexadecimal = '';
     for (let i = 0; i < originalText.length; i++) {
-        const charCode = originalText.charCodeAt(i);
-        textHexadecimal += charCode.toString(16).padStart(2, '0');
+        const char = originalText[i];
+
+        // Si el carácter es un carácter especial, manejarlo de manera especial
+        if (char === 'ñ') {
+            textHexadecimal += 'c3 b1 ';
+        } else {
+            // Obtener el valor hexadecimal del carácter normalmente
+            const charHex = char.codePointAt(0).toString(16).toUpperCase().padStart(2, '0');
+            textHexadecimal += charHex + ' ';
+        }
     }
-    return textHexadecimal;
+    return textHexadecimal.trim(); // Eliminar espacio extra al final
+}
+
+function cipherToBase64(originalText) {
+    // Convertir el texto a un buffer UTF-8
+    const base64EncodedText = Buffer.from(originalText, 'utf-8').toString('base64');
+    return base64EncodedText;
 }
 
 module.exports = {
