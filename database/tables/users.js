@@ -1,3 +1,4 @@
+//database/tables/users.js
 const db = require('../conexion'); //Establece la conexión de la base de datos
 let connection; //Variable para llamar la conexión de la base de datos
 
@@ -11,7 +12,7 @@ async function initializeConnection() {
 async function register(firstName, lastName, userName, email, password) {
     try {
         await connection.query('INSERT INTO users (firstName, lastName, userName, email, passwordHash) VALUES (?,?,?,?,?)', [firstName, lastName, userName, email, password]);
-        console.log('Usuario:', userName, '¡registrado correctamente!');
+        console.log('Usuario:', userName, '¡registrado satisfactoriamente!');
     } catch (error) {
         console.error('Error al insertar usuario:', error);
         throw error;

@@ -1,6 +1,6 @@
 //controllers/otherEncryptors.js
-//Controlador para cifrar texto utilizando el cifrado César y almacenarlo en la base de datos con el model.
-const EncryptionModel= require('../models/cipherModel');
+/*Controlador que contiene multiples cifradores a registrar de distintas vistas = octal.pug, base64.pug, etc.*/
+const EncryptionModel= require('../models/cipherModel'); //Llama al model del cifrador, a la tabla ciphers del mysql
 
 async function miscellaneousCiphers(req, res) {
     const { originalText, cipherType } = req.body;
@@ -55,8 +55,12 @@ async function miscellaneousCiphers(req, res) {
 
     try {
         console.log('Texto cifrado:', textEncrypted);
-        // Inserta el texto original y el texto cifrado en la base de datos
-        await EncryptionModel.cipherModel(originalText, textEncrypted, null);
+
+        // Obtener el ID del usuario si está autenticado, declarado directo en el model cipherModel.js
+        const userId = req.isAuthenticated() ? req.user.id : null;
+
+        // Inserta el texto original y el texto cifrado en la base de datos con el usuario y la clave en valor null
+        await EncryptionModel.cipherModel(originalText, textEncrypted, null, userId);
         // Redirige a la página correspondiente según el tipo de cifrado
         if (cipherType === 'octal') {
             res.redirect(`/pageOctal?textEncryption=${encodeURIComponent(textEncrypted)}`);
@@ -74,6 +78,7 @@ async function miscellaneousCiphers(req, res) {
     }
 }
 
+//Cifrador Octal
 function cipherToOctal(originalText) {
     let textOctal = '';
     for (let i = 0; i < originalText.length; i++) {
@@ -91,6 +96,7 @@ function cipherToOctal(originalText) {
     return textOctal.trim();
 }
 
+//Cifrador Hexadecimal
 function cipherToHexadecimal(originalText) {
     let textHexadecimal = '';
     for (let i = 0; i < originalText.length; i++) {
@@ -108,6 +114,7 @@ function cipherToHexadecimal(originalText) {
     return textHexadecimal.trim(); // Eliminar espacio extra al final
 }
 
+//Cifrador Base64
 function cipherToBase64(originalText) {
     // Convertir el texto a un buffer UTF-8
     const base64EncodedText = Buffer.from(originalText, 'utf-8').toString('base64');

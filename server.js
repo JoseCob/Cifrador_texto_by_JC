@@ -16,6 +16,8 @@ const flash = require('connect-flash'); //Sirve para gestión de mensajes flash.
 const middleWare = require('./middlewares/authentication'); //middleware personalizado. Ruta que contiene la autentificacion hash y token secret 'JWT' en "authentication.js"
 const users = require('./database/tables/users'); //Archivo contenedor de querys para MySQL, en este caso para registrar usuarios
 const router = require('./routes/routes'); //Requiere la carpeta routes, del archivo routes.js para ejecutar las vistas del usuario
+const registerLogin = require('./database/tables/registerLogin'); //Ruta para la consulta del login
+const registerLogout = require('./database/tables/registerLogout'); //Ruta para la consulta del logout
 
 //Configuraciones
 app.use(cookieParser()); //Configura Cookie Parser. Nos permite acceder fácilmente a las cookies den las peticiones del servidor entrantes. 
@@ -41,24 +43,26 @@ passport.use(new LocalStrategy({
   passwordField: 'password'
 }, authenticateUserName)); //Función que se va a encarga de autenticar a los usuarios.
 //función que realiza la autenticación del usuario
-async function authenticateUserName( userName, password, done){ //se declaran las funciones y 'done' se utiliza, para indicar si la autenticación fue exitosa o no.
+async function authenticateUserName(userName, password, done) {
   try {
-    const user = await users.getuserName(userName); //se obtiene el Nombre de usuario de la base de datos.
-    //se llama a 'done' con el parámetro false para indicar que la autenticación ha fallado, porque no encontro ningún usuario
-    if(!user) {
-      return done(null, false, {message: 'El Usuario o la Contraseña Son Incorrectos' });
+    const user = await users.getuserName(userName);
+    if (!user) {
+      return done(null, false, { message: 'El Usuario o la Contraseña Son Incorrectos' });
     }
-    // compara la contraseña ingresada con la contraseña hash almacenada de la base de datos
+    
     const authPassword = await middleWare.comparePassword(password, user.passwordHash);
-    //Indica si la contraseña es incorrecta con 'done'
-    if(!authPassword) {
-      return done(null, false, {message: 'El Usuario o la Contraseña Son Incorrectos'});
+    if (!authPassword) {
+      return done(null, false, { message: 'El Usuario o la Contraseña Son Incorrectos' });
     }
-    //Si usuario y la contraseña son correctos, se llama a 'done' con el parámetro user, para indicar que la autenticación ha tenido éxito.
-    console.log('El Usuario:', userName, 'Inicio Sesión Exitosamente');
-    return done (null, user);
 
-  } catch (err){
+    // Registra el inicio de sesión del usuario utilizando su nombre de usuario
+    await registerLogin.registerLogin(userName);
+    console.log('Inicio de sesión registrado del usuario:', userName);
+
+    console.log('El Usuario:', userName, 'Inicio Sesión Exitosamente');
+    return done(null, user);
+
+  } catch (err) {
     console.error('Error al autentificar usuarios:', err);
     return done(err);
   }
@@ -72,17 +76,16 @@ const userCache = {};
 //Deserializa el id del usuario almacenado en la sesión, para obtener los datos del usuario almacenados
 passport.deserializeUser(async (id, done) => {
   try {
-    // Si el usuario está en la caché, retornarlo
+    //Si el usuario está en la caché, retorna o devuelve ese usuario ya registrado
     if (userCache[id]) {
       return done(null, userCache[id]);
     }
-    // De lo contrario, realizar la consulta a la base de datos utilizando el mismo campo que en la serialización
+    //De lo contrario, realizar la consulta a la base de datos utilizando el id en la serialización
     const user = await users.getIdUser(id);
     
-    // Almacena el usuario en la caché
+    //Almacena el usuario en la caché si apenas se registro en la página
     userCache[id] = user;
-    
-    // Retorna el usuario encontrado
+    //Retorna el usuario encontrado en la página
     return done(null, user);
 
   } catch (error) {
@@ -91,16 +94,16 @@ passport.deserializeUser(async (id, done) => {
   }
 });
 
-//Middleware que se utiliza para manejar errores en la aplicación.
+//Middleware que se utiliza para manejar error directa en la aplicación, indica que hubo un fallo interno en la propia página.
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).send('Algo salió mal');
 });
 
-//Este middleware se utiliza para analizar los datos enviados mediante formularios HTML. Parsea los datos codificados en URL y los expone en req.body. Ejemplo: 'application/x-www-form-urlencoded)'
-app.use(express.urlencoded({ extended: true })); //Se debe de cargar antes de la Ruta raíz o inicio de la página al ejecutarse
+//Este middleware se utiliza para analizar los datos enviados mediante formularios HTML. Parsea los datos codificados en 'URL' y los expone en 'req.body'. Ejemplo: 'application/x-www-form-urlencoded)'
+app.use(express.urlencoded({ extended: true })); //Se debe de cargar antes de la Ruta raíz o inicio de la página al ejecutar la app
 
-//configura el motor de plantillas pug 
+//configura el motor de vistas, en plantillas pug 
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 
@@ -109,41 +112,46 @@ app.use(express.static('public'));
 app.use(express.static('assets'));
 app.use(express.json());//Middleware que analiza JSON, para procesar solicitudes POST
 
-//Ruta raíz o inicio de la página al ejecutarse
+//Ruta raíz o inicio de la página al ejecutar la app
 app.use('/', router);
 
-//Ruta para cerrar sesión desde la Ruta raíz al ejecutarse
+//Ruta para cerrar sesión desde la Ruta raíz al ejecutar la app
 app.get('/logout', async (req, res) => {
-  req.logout((err) => {
+  // Verifica si el usuario está autenticado antes de cerrar la sesión
+  if (req.isAuthenticated()) {
+    const userName = req.user.userName; // Obtén el nombre de usuario del usuario autenticado
+    try {
+      // Registra el cierre de sesión
+      await registerLogout.registerLogout(userName);
+      console.log('Cierre de sesión registrado para el usuario:', userName);
+    } catch (error) {
+      console.error('Error al registrar el cierre de sesión:', error);
+    }
+  }
+  
+  // Cierra la sesión del usuario
+  req.logout(function(err) {
     if (err) {
-      // Muestra un mensaje de error
-      console.error(err);
+      console.error('Error al cerrar sesión:', err);
       return res.status(500).send('Error al cerrar sesión');
     }
 
-    // Eliminar la sesión completa del usuario
+    // Elimina la sesión y las cookies
     req.session.destroy((err) => {
       if (err) {
         console.error('Error al destruir la sesión:', err);
         return res.status(500).send('Error al cerrar sesión');
       }
-      console.log('Sesión finalizado correctamente');
+      console.log('Sesión finalizada correctamente');
+      
+      // Redirige al usuario al inicio
+      res.clearCookie('token');
+      res.redirect('/');
     });
-
-    // Eliminar el contenido del almacén de sesiones
-    req.sessionStore.clear((err) => {
-      if (err) {
-        console.error('Error al limpiar el almacén de sesiones:', err);
-        return res.status(500).send('Error al cerrar sesión');
-      }
-      console.log('Limpieza finalizado correctamente');
-    });
-    res.clearCookie('token');
-    res.redirect('/'); // Redirigir a la página principal al cerrar la sesión
   });
 });
-  
-//Iniciar servidor
+
+//Inicializa el puerto para entrar al servidor de la app
 const port = 3000;
 app.listen(port, () =>{
     console.log(`Servidor iniciado en http://localhost:${port}`);

@@ -1,4 +1,5 @@
 //controllers/cesarController.js
+/*Este controlador unicamente contiene los elementos a registrar en relacion al cifrado César = Vista Cesar.pug*/
 //Controlador para cifrar texto utilizando el cifrado César y almacenarlo en la base de datos con el model.
 const EncryptionModel= require('../models/cipherModel');
 
@@ -27,9 +28,12 @@ async function encryptText(req, res) {
     const textEncrypted = cipherCesar(originalText, encryptionKeyInt);
     
     try {
-        //Insertar el texto original y el texto cifrado con la clave en la base de datos utilizando el modelo de los cifradores
-        await EncryptionModel.cipherModel(originalText, textEncrypted, encryptionKey);
-        //Redirigir al usuario a la página del cifrado Cesar.pug con el texto cifrado como parámetro en la URL
+        //Obtiene el ID del usuario si está autenticado tomado directo del model cipherModel.js
+        const userId = req.isAuthenticated() ? req.user.id : null;
+
+        //Insertar el texto original y el texto cifrado con la clave y el usuario en la base de datos utilizando el modelo de los cifradores
+        await EncryptionModel.cipherModel(originalText, textEncrypted, encryptionKey, userId);
+        //Redirigir al usuario a la página del cifrado César.pug con el texto cifrado como parámetro en la URL
         res.redirect(`/pageCesar?textEncryption=${encodeURIComponent(textEncrypted)}`);//Redirige con el valor cifrado en el controlador de cipherCesar
     } catch (error) {
         console.error('Error al cifrar y almacenar el texto:', error);
@@ -41,7 +45,7 @@ async function encryptText(req, res) {
 function cipherCesar(originalText, encryptionKey) { //Se obtiene el texto Original con la clave a cifrar 
     const alfabeto = 'abcdefghijklmnñopqrstuvwxyz'; // Alfabeto en minúsculas, incluyendo la "ñ"
 
-    // Convertir el texto original a minúsculas para simplificar el cifrado del Cesar
+    // Convertir el texto original a minúsculas para simplificar el cifrado del César
     originalText = originalText.toLowerCase();
 
     // Convertir la clave a un número entero, de ser cadena de texto => número por el selector de las claves
@@ -49,7 +53,7 @@ function cipherCesar(originalText, encryptionKey) { //Se obtiene el texto Origin
 
     let textEncryption = ''; //Obtiene un valor vacío de forma preterminada
 
-    //Operador que hacer el cifrado Cesar 
+    //Operador que hacer el cifrado César 
     for (let i = 0; i < originalText.length; i++) {
         const caracter = originalText[i];
         const indice = alfabeto.indexOf(caracter); // Obtener el índice del caracter en el alfabeto

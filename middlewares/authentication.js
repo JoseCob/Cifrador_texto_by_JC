@@ -1,3 +1,4 @@
+//middlewares/authentication.js
 const jwt = require('jsonwebtoken'); //Dependencia para el token
 const bcrypt = require('bcrypt'); //Dependencia para generar contraseñas hash "cifrado Blowfish"
 const dotenv = require('dotenv'); //cargar variables de entorno desde un archivo ".env"
